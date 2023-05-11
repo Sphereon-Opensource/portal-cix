@@ -1,34 +1,34 @@
 :root {
   /* Portal brand color variables */
-  --brand-black: #000046;
-  --brand-blue: #000094;
-  --brand-cyan: #46daff;
-  --brand-purple: #7300f3;
-  --brand-violet: #b900ff;
+  --brand-black: #051117;
+  --brand-blue: #092c38;
+  --brand-cyan: #00eddd;
+  --brand-purple: #d42248;
+  --brand-violet: #fb2e5e;
 
-  --brand-blue-light: #316aea;
-  --brand-blue-dark: #00205c;
-  --brand-blue-darker: #040050;
+  --brand-blue-light: #137691;
+  --brand-blue-dark: #0e4558;
+  --brand-blue-darker: #052530;
   --brand-green-light: #87c300;
   --brand-green: #00b96e;
   --brand-green-dark: #108a43;
-  --brand-white: #ffffff;
+  --brand-white: #fff;
 
-  --brand-grey-white: #f9f9f9;
-  --brand-grey: #aeaeae;
+  --brand-grey-white: #f0f4f6;
+  --brand-grey: #a3afb7;
   --brand-greyish: #d8d8d8;
   --brand-grey-light: #8b98a9;
   --brand-grey-lighter: #e2e2e2;
   --brand-grey-dimmed: #f7f7f7;
 
   --brand-gradient: linear-gradient(
-    to right bottom,
-    var(--brand-cyan),
-    var(--brand-blue-light)
+      to right bottom,
+      var(--brand-cyan),
+      var(--brand-blue-light)
   );
 
   --brand-alert-green: #5fb359;
-  --brand-alert-red: #d80606;
+  --brand-alert-red: #d42248;
   --brand-alert-orange: #b35f36;
   --brand-alert-yellow: #eac146;
 

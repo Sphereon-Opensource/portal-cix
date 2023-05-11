@@ -10,10 +10,10 @@
   --background-fill-light: var(--brand-grey-white);
   --background-markdown-code: var(--brand-grey-white);
   --link-color: var(--brand-blue-light);
-  --link-hover-color: var(--brand-blue-light);
+  --link-hover-color: var(--brand-cyan);
 
   /* Only use these vars for most color referencing for easy light/dark mode */
-  --font-color-text: var(--brand-blue-dark);
+  --font-color-text: var(--brand-black);
   --font-color-text-inverted: var(--brand-white);
   --font-color-heading: var(--brand-blue-dark);
   --font-color-light: var(--color-secondary);
@@ -73,8 +73,8 @@
   --input-selected-border-color: var(--font-color-heading);
 
   /* Buttons */
-  --button-border-radius: 5px;
-  --button-border-size: 2px;
+  --button-border-radius: 25px;
+  --button-border-size: 0px;
   --button-font-color: var(--brand-white);
   --button-background: var(--font-color-light);
   --button-hover-font-color: var(--brand-white);
@@ -134,13 +134,13 @@
   /* Filter and sort */
   --filter-font-color: var(--color-secondary);
   --filter-hover-font-color: var(--color-primary);
-  --filter-hover-background: var(--color-secondary);
+  --filter-hover-background: var(--brand-grey-white);
   --filter-selected-font-color: var(--color-primary);
   --filter-background: var(--background-content);
-  --filter-selected-background: var(--color-secondary);
+  --filter-selected-background: var(--brand-grey-lighter);
   --filter-border-radius: var(--border-radius);
   --filter-border-size: var(--border-size);
-  --filter-border-color: var(--color-secondary);
+  --filter-border-color: var(--brand-greyish);
   --filter-selected-border-color: var(--color-secondary);
   --filter-clear-font-color: var(--color-secondary);
   --filter-clear-hover-font-color: var(--color-highlight);
@@ -152,12 +152,12 @@
   --confetti-color-four: var(--brand-grey-light);
   --confetti-color-five: var(--brand-grey-lighter);
 
-  --font-family-base: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Helvetica, Arial, sans-serif;
-  --font-family-heading: 'Poppins', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Helvetica, Arial, sans-serif;
-  --font-family-monospace: 'Fira Code', 'Fira Mono', Menlo, Monaco, Consolas,
-    'Courier New', monospace;
+  --font-family-base: 'Overpass', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  Helvetica, Arial, sans-serif;
+  --font-family-heading: 'Overpass', -apple-system, BlinkMacSystemFont,
+  'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-family-monospace: 'Overpass Mono', 'Fira Mono', Menlo, Monaco, Consolas,
+  'Courier New', monospace;
 
   --font-size-root: 15px;
   --font-size-base: 1rem;
@@ -172,16 +172,16 @@
   --font-size-h3: 1.7rem;
   --font-size-h4: 1.3rem;
   --font-size-h5: 1.1rem;
-  --font-weight-light: 300;
-  --font-weight-base: 400;
-  --font-weight-bold: 500;
+  --font-weight-light: 200;
+  --font-weight-base: 300;
+  --font-weight-bold: 600;
   --line-height: 2;
 
   --spacer: 2rem;
   --border-radius-sm: 2px;
   --border-radius: 5px;
   --border-size-sm: 1px;
-  --border-size: 2px;
+  --border-size: 1px;
 
   --layout-max-width: 85rem;
   --checkbox-size: 1.6em;
