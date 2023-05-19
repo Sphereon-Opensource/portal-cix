@@ -1,11 +1,11 @@
 {
-  "body": "Find or publish datasets and AI algorithms for solving challenges in mobility. Experience and leverage decentralized technologies and the European Gaia-X data sharing concepts. Facilitating public-private, cross-sector, cross-border collaboration while maintaining digital sovereignty.",
+  "body": "The Clinical Insights Exchange (CIX) is a federated data platform where \nbiopharma professionals, clinicians, and data scientists can exchange clinical \ndata assets and analytics services in a trusted, privacy-friendly environment.",
   "cta": [
     {
-      "label": "Go to catalogue",
+      "label": "View catalogue",
       "link": "/search?sort=_score&sortOrder=desc&text="
     },
-    { "label": "About this demo", "link": "/about" }
+    { "label": "Learn more", "link": "/about" }
   ],
   "carousel": [
     "/images/headerCarousel/1-road.jpeg",

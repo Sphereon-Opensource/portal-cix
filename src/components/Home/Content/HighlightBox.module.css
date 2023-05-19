@@ -1,6 +1,40 @@
 .container {
   padding: var(--spacer);
+}
+
+.firstTimeContainer {
+  padding: var(--spacer);
   background-color: var(--background-fill-light);
+  border-radius: 7px;
+}
+
+.getInvolvedContainer {
+  padding: var(--spacer);
+  background-color: var(--brand-blue-dark);
+  border-radius: 7px;
+}
+
+.firstTimeButton {
+  padding: var(--spacer);
+  background-color: var(--background-fill-light);
+}
+
+.getInvolvedButton {
+  padding: var(--spacer);
+  background-color: var(--brand-blue-dark);
+}
+
+.firstTimeHeading {
+  display: flex;
+  gap: calc(var(--spacer) / 4);
+  margin-bottom: calc(var(--spacer) / 2);
+}
+
+.getInvolvedHeading {
+  display: flex;
+  gap: calc(var(--spacer) / 4);
+  margin-bottom: calc(var(--spacer) / 2);
+  color: white;
 }
 
 .heading {

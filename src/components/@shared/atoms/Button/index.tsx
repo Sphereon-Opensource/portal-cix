@@ -14,7 +14,7 @@ export interface ButtonProps {
   to?: string
   name?: string
   size?: 'small'
-  style?: 'primary' | 'ghost' | 'outline' | 'text'
+  style?: 'primary' | 'ghost' | 'outline' | 'text' | 'firstTime' | 'getInvolved'
   type?: 'submit'
   download?: boolean
   target?: string
@@ -43,6 +43,12 @@ export default function Button({
     [className]: className
   })
 
+  const buttonStyle =
+    style === 'firstTime'
+      ? { color: 'black' }
+      : style === 'getInvolved'
+      ? { color: 'white' }
+      : {}
   return to ? (
     <Link href={to} className={styleClasses} {...props}>
       {children}
@@ -60,7 +66,7 @@ export default function Button({
       {arrow && <>&nbsp;&#8599;</>}
     </a>
   ) : (
-    <button className={styleClasses} {...props}>
+    <button className={styleClasses} style={buttonStyle}>
       {children}
     </button>
   )

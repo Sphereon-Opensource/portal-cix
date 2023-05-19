@@ -1,0 +1,35 @@
+[
+  {
+    "caption": "Federated analytics",
+    "title": "Empowering data scientists and AI developers",
+    "text": "In addition to facilitating exchanges between clinical researchers, Triall CIX will \nprovide a platform for innovation in AI and federated data analytics. Data \nscientists and algorithm developers can leverage diverse clinical datasets that \nare interfaced with CIX to design, train, and implement advanced analytics \nservices. By default, clinical dataset providers retain full control over access \nterms and conditions and are directly compensated for providing computational \naccess."
+  },
+
+  {
+    "caption": "Data use cases",
+    "title": "Unlocking data-driven clinical research",
+    "text": "Working with clinicians, data scientists, and AI model developers, Triall CIX \ntargets a variety of use cases to enable more data-driven clinical research, \nincluding:",
+    "sublist": [
+      {
+        "icon": "noun-digital-twin-4116915-052530.svg",
+        "title": "Synthesising Historical Control Groups",
+        "text": "Leveraging control data from past trials to reduce patient burden, lower costs, \nand advance study timelines, making use of Bayesian and Propensity Score \nMatching statistical techniques."
+      },
+      {
+        "icon": "noun-deep-learning-3557154-052530.svg",
+        "title": "Training Deep Learning Models for Computer Aided Diagnosis (CDx)",
+        "text": "Providing AI developers access to diverse clinical data in a privacy-preserving \nway to train Computer Aided Diagnosis and other types of Deep Learning models\nfor clinical application."
+      },
+      {
+        "icon": "noun-project-5188080-052530.svg",
+        "title": "Offering Insights for Study Planning & Feasibility",
+        "text": "Analysing aggregate study performance data for more accurate prediction of \nstudy timelines, drop-out rates, and sample size requirements."
+      },
+      {
+        "icon": "noun-data-analysis-4696445-052530.svg",
+        "title": "Identifying Drug Targets & Trends",
+        "text": "Opening up new avenues for clinical, empirical, and epidemiological research \ninto health trends and disease predictors."
+      }
+    ]
+  }
+]
