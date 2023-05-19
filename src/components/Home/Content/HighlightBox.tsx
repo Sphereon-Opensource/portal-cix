@@ -3,13 +3,17 @@ import styles from './HighlightBox.module.css'
 import Eye from '@images/eye.svg'
 import Chat from '@images/chat.svg'
 import Catalogue from '@images/catalogueIcon.svg'
+import QuickStart from '@images/noun-manual-3556190-052530.svg'
+import ScheduleACall from '@images/noun-reservation-2548878-052530.svg'
 import Markdown from '@components/@shared/Markdown'
 import Button from '@components/@shared/atoms/Button'
 
 const icons = {
   eye: <Eye />,
   catalogue: <Catalogue />,
-  chat: <Chat />
+  chat: <Chat />,
+  scheduleACall: <ScheduleACall />,
+  quickStart: <QuickStart />
 }
 
 export default function HighlightBox({
@@ -52,9 +56,19 @@ export default function HighlightBox({
       ) : (
         <Markdown text={body} />
       )}
-      <Button style={`${style}`} to={link}>
-        {buttonLabel}
-      </Button>
+      {style === 'getInvolved' || style === 'firstTime' ? (
+        <Button
+          style={style}
+          to={link}
+          icon={style === 'getInvolved' ? <ScheduleACall /> : <QuickStart />}
+        >
+          {buttonLabel}
+        </Button>
+      ) : (
+        <Button style={style} to={link}>
+          {buttonLabel}
+        </Button>
+      )}
     </div>
   )
 }

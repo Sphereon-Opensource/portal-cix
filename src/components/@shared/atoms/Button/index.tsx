@@ -1,4 +1,4 @@
-import React, { ReactNode, FormEvent, ReactElement } from 'react'
+import React, { ReactNode, FormEvent, ReactElement, ReactSVG } from 'react'
 import Link from 'next/link'
 import classNames from 'classnames/bind'
 import styles from './index.module.css'
@@ -21,9 +21,11 @@ export interface ButtonProps {
   rel?: string
   title?: string
   arrow?: boolean
+  icon?: ReactSVG
 }
 
 export default function Button({
+  icon,
   href,
   children,
   className,
@@ -49,10 +51,21 @@ export default function Button({
       : style === 'getInvolved'
       ? { color: 'white' }
       : {}
-  return to ? (
-    <Link href={to} className={styleClasses} {...props}>
+
+  const buttonContent = (
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      {icon &&
+        React.cloneElement(icon, {
+          style: { marginRight: '10px', width: '24px', height: '24px' }
+        })}
       {children}
       {arrow && <>&nbsp;&#8594;</>}
+    </div>
+  )
+
+  return to ? (
+    <Link href={to} className={styleClasses} {...props}>
+      {buttonContent}
     </Link>
   ) : href ? (
     <a
@@ -62,12 +75,11 @@ export default function Button({
       rel="noopener noreferrer"
       {...props}
     >
-      {children}
-      {arrow && <>&nbsp;&#8599;</>}
+      {buttonContent}
     </a>
   ) : (
     <button className={styleClasses} style={buttonStyle}>
-      {children}
+      {buttonContent}
     </button>
   )
 }
