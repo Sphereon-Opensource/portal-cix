@@ -2,13 +2,13 @@
   {
     "caption": "Federated analytics",
     "title": "Empowering data scientists and AI developers",
-    "text": "In addition to facilitating exchanges between clinical researchers, Triall CIX will \nprovide a platform for innovation in AI and federated data analytics. Data \nscientists and algorithm developers can leverage diverse clinical datasets that \nare interfaced with CIX to design, train, and implement advanced analytics \nservices. By default, clinical dataset providers retain full control over access \nterms and conditions and are directly compensated for providing computational \naccess."
+    "text": "In addition to facilitating exchanges between clinical researchers, Triall CIX will provide a platform for innovation in AI and federated data analytics. Data scientists and algorithm developers can leverage diverse clinical datasets that are interfaced with CIX to design, train, and implement advanced analytics services. By default, clinical dataset providers retain full control over access terms and conditions and are directly compensated for providing computational access."
   },
 
   {
     "caption": "Data use cases",
     "title": "Unlocking data-driven clinical research",
-    "text": "Working with clinicians, data scientists, and AI model developers, Triall CIX \ntargets a variety of use cases to enable more data-driven clinical research, \nincluding:",
+    "text": "Working with clinicians, data scientists, and AI model developers, Triall CIX targets a variety of use cases to enable more data-driven clinical research, including:",
     "sublist": [
       {
         "icon": "noun-digital-twin-4116915-052530.svg",

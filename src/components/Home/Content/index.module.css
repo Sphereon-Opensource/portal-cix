@@ -11,6 +11,18 @@
   margin-bottom: calc(var(--spacer) * 1.5);
 }
 
+.subtitleGrey {
+  color: #ccd8df;
+  text-align: center;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-family: Open Sans, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.111em;
+}
+
 .secondarySection {
   display: flex;
   flex-direction: column;

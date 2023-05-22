@@ -9,6 +9,7 @@ import HighlightBox from '@components/Home/Content/HighlightBox'
 
 interface HomeContentData {
   teaser: {
+    caption: string
     title: string
     text: string
     button?: {
@@ -41,10 +42,11 @@ export default function HomeContent(): ReactElement {
   const { teaser, points, firstTimeVisiting, getInvolved }: HomeContentData =
     topContent
   const teasers = followingContents
-
+  console.log(`${styles.subtitleGrey}`)
   return (
     <Container className={styles.wrapper}>
       <div>
+        <span className={styles.subtitleGrey}>{teaser.caption}</span>
         <h2>{teaser.title}</h2>
         <div className={styles.container}>
           <div className={styles.teaser}>
@@ -52,6 +54,7 @@ export default function HomeContent(): ReactElement {
           </div>
           <div className={styles.secondarySection}>
             <div className={styles.points}>
+              <span className={styles.subtitleGrey}>{points.caption}</span>
               {points.list.map((point, i) => (
                 <span key={i}>
                   <Checkmark className={styles.checkmark} />
@@ -83,6 +86,7 @@ export default function HomeContent(): ReactElement {
         </div>
         {teasers.map((teaserItem, index) => (
           <div key={index}>
+            <span className={styles.subtitleGrey}>{teaserItem.caption}</span>
             <h2>{teaserItem.title}</h2>
             <div className={styles.teaser}>
               <div className={styles.teaser}>
