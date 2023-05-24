@@ -47,7 +47,10 @@ export default function HighlightBox({
         }`}
       >
         <span className={styles.icon}>{icons[icon]}</span>
-        <h3 style={style === 'getInvolved' ? { color: 'white' } : {}}>
+        <h3
+          style={style === 'getInvolved' ? { color: 'white' } : {}}
+          className={styles.boxTitle}
+        >
           {title}
         </h3>
       </span>

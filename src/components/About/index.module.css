@@ -6,10 +6,26 @@
 
 .main {
   --image-height: 30rem;
+  min-width: available;
   position: relative;
-  display: flex;
+  flex: 1;
   flex-direction: column;
   padding-top: var(--image-height);
+}
+
+.secondarySection {
+  gap: calc(var(--spacer) * 2);
+  margin-left: 4em;
+  max-width: 40em;
+  min-width: 38em;
+}
+
+.triallImage {
+  max-width: 35em;
+  margin-bottom: 5em;
+}
+.containerWide {
+  max-width: 100em;
 }
 
 .partnersWrapper {
@@ -33,6 +49,7 @@
 }
 
 .content {
+  min-width: 60em;
   order: 2;
   padding: 0;
   padding-top: var(--spacer);
@@ -44,6 +61,12 @@
 
 .contactsContainer .body {
   margin-bottom: var(--spacer);
+}
+
+.smallButtonLandingMain {
+  margin-left: 1em;
+  color: red;
+  font-size: xx-large;
 }
 
 .contacts {
@@ -109,7 +132,9 @@
     margin-top: var(--spacer);
   }
   .mainContainer {
+    display: flex;
     margin-top: var(--spacer);
+    margin-left: 0;
   }
   .main {
     flex-direction: row;

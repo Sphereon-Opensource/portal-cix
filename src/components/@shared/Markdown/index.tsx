@@ -25,7 +25,9 @@ const Markdown = ({
       <div
         dangerouslySetInnerHTML={{ __html: content }}
         style={{
-          ...(className === 'getInvolved' && { color: 'white' })
+          ...(className === 'getInvolved' && { color: 'white' }),
+          ...(className === 'firstTime' && { color: 'black' }),
+          ...{ fontSize: 'x-large' }
         }}
       />
       {subContent && (

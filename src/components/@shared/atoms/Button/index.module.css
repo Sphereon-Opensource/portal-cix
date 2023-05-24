@@ -6,7 +6,7 @@
   display: inline-block;
   width: fit-content;
   min-width: 7rem;
-  padding: calc(var(--spacer) / 3) var(--spacer);
+  padding: calc(var(--spacer) / 2.28) calc(var(--spacer) * 1.125);
   font-size: var(--font-size-base);
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-bold);
@@ -17,6 +17,28 @@
   box-shadow: 0 9px 18px 0 rgba(0, 0, 0, 0.1);
   user-select: none;
   text-align: center;
+}
+
+.button .getInvolved {
+  font-size: x-large;
+  align-items: center;
+  font-weight: normal;
+  line-height: 1em;
+}
+
+.button .firstTime {
+  font-size: x-large;
+  align-items: center;
+  font-weight: normal;
+  line-height: 1.111;
+}
+
+.button .smallInfo {
+  font-size: x-large;
+  align-items: center;
+  font-weight: normal;
+  line-height: 1.111;
+  background: red;
 }
 
 .button:hover,

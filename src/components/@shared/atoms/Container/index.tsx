@@ -21,5 +21,12 @@ export default function Container({
     [className]: className
   })
 
-  return <div className={styleClasses}>{children}</div>
+  return (
+    <div
+      className={styleClasses}
+      style={{ marginRight: '10em', marginRight: '10em' }}
+    >
+      {children}
+    </div>
+  )
 }

@@ -4,14 +4,18 @@
 
 .firstTimeContainer {
   padding: var(--spacer);
+  font-size: x-large;
   background-color: var(--background-fill-light);
-  border-radius: 7px;
+  border-radius: 0.5em;
 }
 
 .getInvolvedContainer {
+  margin-top: 10em;
+  margin-bottom: 5em;
+  font-size: x-large;
   padding: var(--spacer);
   background-color: var(--brand-blue-dark);
-  border-radius: 7px;
+  border-radius: 0.5em;
 }
 
 .firstTimeButton {
@@ -25,12 +29,14 @@
 }
 
 .firstTimeHeading {
+  font-size: xx-large;
   display: flex;
   gap: calc(var(--spacer) / 4);
   margin-bottom: calc(var(--spacer) / 2);
 }
 
 .getInvolvedHeading {
+  font-size: xx-large;
   display: flex;
   gap: calc(var(--spacer) / 4);
   margin-bottom: calc(var(--spacer) / 2);
@@ -44,6 +50,7 @@
 }
 
 .heading h3 {
+  margin-top: 0.5em;
   margin-bottom: 0;
 }
 
@@ -51,7 +58,11 @@
   margin: 0;
 }
 
+.boxTitle {
+  margin-top: 0.5em;
+}
+
 .icon svg {
-  width: 2rem;
+  width: 4rem;
   stroke: var(--brand-green);
 }

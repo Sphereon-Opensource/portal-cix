@@ -4,41 +4,137 @@ import content from '../../../content/pages/aboutDemo.json'
 import Container from '@components/@shared/atoms/Container'
 import Markdown from '@components/@shared/Markdown'
 import Partners from '@components/@shared/Partners'
+import HighlightBox from '@components/Home/Content/HighlightBox'
+import highlightboxContent from '../../../content/pages/home/top-content.json'
+import Button from '@shared/atoms/Button'
 
 interface AboutContent {
-  header: {
+  header?: {
     title: string
     body: string
-  }
-  footer: {
-    title: string
-    body: string
-    contacts: {
-      name: string
-      image: string
+    linkedText: {
       text: string
-      cta: {
-        label: string
-        link: string
+      link: {
+        text: string
+        to: string
+        color: string
       }
-    }[]
+    }
   }
-  image: string
+  image?: string
+  points?: {
+    icon: string
+    title: string
+    text: string
+  }[]
+  button?: {
+    text: string
+    to: string
+  }
+  getInvolved?: {
+    title: string
+    text: string
+    buttonLabel: string
+    link: string
+  }
+  firstTimeVisiting?: {
+    title: string
+    text: string
+    buttonLabel: string
+    link: string
+  }
 }
 
 export default function AboutPage(): ReactElement {
-  const { header, footer, image }: AboutContent = content
-
+  const { header, points, button, image }: AboutContent = content
+  const { firstTimeVisiting, getInvolved }: AboutContent = highlightboxContent
   return (
-    <div className={styles.wrapper}>
+    <div className={`${styles.wrapper} ${styles.containerWide}`}>
       <Container className={styles.mainContainer}>
         <div className={styles.main}>
           <div className={styles.content}>
             <h2 className={styles.title}>{header.title}</h2>
             <Markdown className={styles.body} text={header.body} />
+            <p>
+              {header.linkedText.text}
+              <a
+                href={header.linkedText.link.to}
+                style={{ color: header.linkedText.link.color }}
+              >
+                {header.linkedText.link.text}
+              </a>
+            </p>
+            <div>
+              {points.map((elem, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'flex-start',
+                    marginBottom: '0.5em'
+                  }}
+                >
+                  <div
+                    style={{
+                      marginRight: '1.5em',
+                      padding: '0.5em',
+                      backgroundColor: '#f0f4f7',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: '0.5em'
+                    }}
+                  >
+                    <img
+                      src={`images/clinical-research/${elem.icon}`}
+                      style={{ width: '4em' }}
+                      alt={'logo'}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column'
+                    }}
+                  >
+                    <p style={{ fontWeight: 'bold', marginBottom: '1em' }}>
+                      {elem.title}
+                    </p>
+                    <p style={{ fontStyle: 'italic' }}>{elem.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ maxHeight: '0.5em' }}>
+              <Button to={button.to} style={'smallInfo'}>
+                {button.text}{' '}
+                <span className={styles.smallButtonLandingMain}> {'>'} </span>
+              </Button>
+            </div>
           </div>
-          <div className={styles.media}>
-            <img src={image} className={styles.image} />
+        </div>
+        <div className={styles.secondarySection}>
+          <div className={styles.triallImage}>
+            <img src={`images/headerCarousel/${image}`} alt={'triall-iamge'} />
+          </div>
+          <div className={styles.points}>
+            <HighlightBox
+              icon="chat"
+              title={getInvolved.title}
+              body={getInvolved.text}
+              buttonLabel={getInvolved.buttonLabel}
+              link={getInvolved.link}
+              style={'getInvolved'}
+            />
+            <HighlightBox
+              icon="eye"
+              title={firstTimeVisiting.title}
+              body={firstTimeVisiting.text}
+              buttonLabel={firstTimeVisiting.buttonLabel}
+              link={firstTimeVisiting.link}
+              style={'firstTime'}
+            />
           </div>
         </div>
       </Container>
@@ -48,22 +144,6 @@ export default function AboutPage(): ReactElement {
           <Partners className={styles.partners} />
         </Container>
       </div>
-      <Container className={styles.contactsContainer}>
-        <h2 className={styles.title}>{footer.title}</h2>
-        <Markdown className={styles.body} text={footer.body} />
-        <div className={styles.contacts}>
-          {footer.contacts.map((e, i) => (
-            <div className={styles.contact} key={i}>
-              <img src={e.image} />
-              <div className={styles.contactDetails}>
-                <h4>{e.name}</h4>
-                <Markdown className={styles.contactText} text={e.text} />
-                <a href={e.cta.link}>{e.cta.label}</a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Container>
     </div>
   )
 }

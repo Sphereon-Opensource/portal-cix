@@ -1,10 +1,13 @@
 .wrapper {
   margin-top: calc(var(--spacer) * 2);
+  margin-left: 20em;
+  margin-right: 10em;
 }
 
 .container {
   display: flex;
   flex-direction: column;
+  margin-bottom: 0.5em;
 }
 
 .teaser p {
@@ -16,17 +19,45 @@
   text-align: center;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 2em;
   font-family: Open Sans, sans-serif;
-  font-size: 14px;
+  font-size: 1em;
   font-weight: 700;
   line-height: 1.111em;
+}
+
+.valuesIconWrapper {
+  width: 5em;
+  height: 5em;
+  min-width: 4em;
+  border-radius: 1.1em;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.5em;
+  display: flex;
+  overflow: hidden;
+  background-color: #f0f4f6;
+}
+
+.valuesContainer {
+  display: flex;
+  flexdirection: row;
+  alignitems: flex-start;
+  marginbottom: 0.5em;
+}
+
+.smallButtonLandingMain {
+  margin-left: 1em;
+  color: red;
+  font-size: xx-large;
 }
 
 .secondarySection {
   display: flex;
   flex-direction: column;
   gap: calc(var(--spacer) * 2);
+  width: auto;
+  /*max-width: 15rem;*/
 }
 
 .points {
@@ -62,13 +93,19 @@
 
 @media screen and (min-width: 55rem) {
   .wrapper {
+    /*flex: 1;*/
+    max-width: 100em;
     margin-top: calc(var(--spacer) * 3);
+    /*margin-right: 10rem;*/
+    /*margin-left: 20rem;*/
   }
   .container {
     flex-direction: row;
     gap: calc(var(--spacer) * 3);
   }
   .teaser {
+    margin-right: 4em;
+    flex: 1;
     width: 60%;
   }
   .secondarySection {

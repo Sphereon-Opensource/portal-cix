@@ -14,7 +14,14 @@ export interface ButtonProps {
   to?: string
   name?: string
   size?: 'small'
-  style?: 'primary' | 'ghost' | 'outline' | 'text' | 'firstTime' | 'getInvolved'
+  style?:
+    | 'primary'
+    | 'ghost'
+    | 'outline'
+    | 'text'
+    | 'firstTime'
+    | 'getInvolved'
+    | 'smallInfo'
   type?: 'submit'
   download?: boolean
   target?: string
@@ -50,10 +57,24 @@ export default function Button({
       ? { color: 'black' }
       : style === 'getInvolved'
       ? { color: 'white' }
+      : style === 'smallInfo'
+      ? { color: 'black', background: 'red' }
       : {}
 
   const buttonContent = (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div
+      style={{
+        ...(style === 'getInvolved' && { color: 'white', maxHeight: '1.5em' }),
+        ...(style === 'firstTime' && { color: 'black', maxHeight: '1.5em' }),
+        ...(style === 'smallInfo' && { color: 'black', maxHeight: '1em' }),
+        ...{
+          fontSize: 'x-large',
+          display: 'flex',
+          alignItems: 'center',
+          fontWeight: 'normal'
+        }
+      }}
+    >
       {icon &&
         React.cloneElement(icon, {
           style: { marginRight: '10px', width: '24px', height: '24px' }
@@ -78,7 +99,18 @@ export default function Button({
       {buttonContent}
     </a>
   ) : (
-    <button className={styleClasses} style={buttonStyle}>
+    <button
+      className={
+        style === 'getInvolved'
+          ? 'getInvolved'
+          : style === 'firstTime'
+          ? 'firstTime'
+          : style === 'smallInfo'
+          ? 'smallInfo'
+          : styleClasses
+      }
+      style={buttonStyle}
+    >
       {buttonContent}
     </button>
   )

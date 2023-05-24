@@ -1,31 +1,36 @@
 {
   "header": {
-    "title": "About this demo",
-    "body": "This environment has been built for Rijkswaterstaat (part of the Dutch Ministry of Infrastructure and Water Management). It aims at facilitating the discussion and awareness building about how different types of data, collected by Rijkswaterstaat, can be leveraged for solving societal challenges.\n\nWhich data can be shared as open data, which not? Which data should be free, which paid? What options exist to materialize Rijkswaterstaat data? How to set fair and market conform pricing on data? What options exist to collaborate with third party organization for providing data access to restricted data, keeping security and privacy in mind? What is the EU Gaia-X initiative and what advantages could this offer for data sharing across borders? How does Gaia-X relate to existing data sharing initiatives and which different Gaia-X implementations exist already?\n\nObjectives:\n- Implement an open source, practical example to discuss future proof data sharing\n- Learn about cross-border data sharing and latest Gaia-X concepts\n- Use an example Gaia-X implementation for comparison with other data sharing initiatives (not to compete but to collaborate on achieving the best future proof solution)\n- Provide a base infrastructure that may be leveraged for hackathons, proof of concepts collaboration with other organizations;\n\nThese topics apply to many other public and private organizations in the Netherlands and other countries. In upcoming phases interested public and private organization from the Netherlands or other countries can start participating on this initiative. For instance, by adding datasets or algorithms to the marketplace."
-  },
-  "footer": {
-    "title": "How to join?",
-    "body": "For more information on this environment or how to get involved and participate in potential next steps please contact:",
-    "contacts": [
-      {
-        "name": "Arthur Maring",
-        "image": "/images/contacts/arthur.png",
-        "text": "Innovation Manager Smart Mobility, Rijkswaterstaat",
-        "cta": {
-          "label": "Get in touch with Arthur",
-          "link": "mailto:arthur.maring@rws.nl"
-        }
-      },
-      {
-        "name": "Harmen van der Kooij",
-        "image": "/images/contacts/harmen.jpeg",
-        "text": "Lead Mobility Track at Dutch Blockchain Coalition",
-        "cta": {
-          "label": "Get in touch with Harmen",
-          "link": "mailto:harmen.vanderkooij@dutchblockchaincoalition.org"
-        }
+    "title": "About Triall",
+    "body": "Triall is a Dutch company that offers innovative software and services to organisations involved in clinical trials. Since 2018, the company has been spearheading the implementation of decentralised and privacy-enhancing technologies in clinical research.",
+    "linkedText": {
+      "text": "Member of the ",
+      "link": {
+        "text": "Mayo Clinic Innovation Exchange",
+        "to": "https://innovationexchange.mayoclinic.org/",
+        "color": "red"
       }
-    ]
+    }
   },
-  "image": "/images/headerCarousel/1-road.jpeg"
+  "image": "iStock-1182619274-cropped.jpg",
+  "points": [
+    {
+      "icon": "vision",
+      "title": "Vision",
+      "text": "Triall’s vision is to shape a digital ecosystem for clinical trials: a cross-system, multi-sided collaboration platform through which biopharma professionals, clinicians, patients, and other clinical trial stakeholders can collaborate and exchange research data and insights in a secure, verifiable, and self-sovereign way. This opens up ample opportunity for smarter, more-efficient, and truly patient-centric clinical research."
+    },
+    {
+      "icon": "Partners & Collaborators",
+      "title": "Partners & Collaborators",
+      "text": "In building out this digital ecosystem, Triall works with industry-leading organisations in the domains of clinical research, blockchain, Self-Sovereign Identity (SSI), Web3 standards, and secure computation. These include Mayo Clinic, Stanford University’s Human Perception Lab, Sphereon, Crucial Data Solutions, CR2O, Dutch Blockchain Coalition, and many more. To join our consortium of innovators, reach out to our team."
+    },
+    {
+      "icon": "Triall’s utility token TRL",
+      "title": "Triall’s utility token TRL",
+      "text": "The TRL token offers a platform-native means of payment for software and services and represents a key building block of Triall’s ecosystem vision, where it can coordinate fair, equitable, and peer-to-peer exchange of data resources between data providers, data consumers and computation service providers."
+    }
+  ],
+  "button": {
+    "text": "More about Triall.io",
+    "to": "triall.io/about"
+  }
 }
