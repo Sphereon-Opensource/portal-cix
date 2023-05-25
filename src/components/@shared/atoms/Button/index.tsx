@@ -49,6 +49,7 @@ export default function Button({
     outline: style === 'outline',
     text: style === 'text',
     small: size === 'small',
+    smallInfo: style === 'smallInfo',
     [className]: className
   })
 
@@ -83,7 +84,7 @@ export default function Button({
       {arrow && <>&nbsp;&#8594;</>}
     </div>
   )
-
+  console.log(`style is: ${style}`)
   return to ? (
     <Link href={to} className={styleClasses} {...props}>
       {buttonContent}

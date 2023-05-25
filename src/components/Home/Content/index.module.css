@@ -14,6 +14,14 @@
   margin-bottom: calc(var(--spacer) * 1.5);
 }
 
+.containerMain {
+  display: flex;
+}
+
+.teaserWrapper {
+  margin-top: 1.5em;
+}
+
 .subtitleGrey {
   color: #ccd8df;
   text-align: center;
@@ -24,6 +32,25 @@
   font-size: 1em;
   font-weight: 700;
   line-height: 1.111em;
+}
+
+.clinicalResearchValuesIconImage {
+  max-width: 100%;
+  display: inline-block;
+}
+
+.clinicalResearchValueTextContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.clinicalResearchValueTextHeader {
+  font-weight: bold;
+  margin-bottom: 1em;
+}
+
+.clinicalResearchValueTextText {
+  font-style: italic;
 }
 
 .valuesIconWrapper {

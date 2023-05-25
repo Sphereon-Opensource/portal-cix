@@ -19,26 +19,26 @@
   text-align: center;
 }
 
-.button .getInvolved {
+.button.getInvolved {
   font-size: x-large;
   align-items: center;
   font-weight: normal;
   line-height: 1em;
 }
 
-.button .firstTime {
+.button.firstTime {
   font-size: x-large;
   align-items: center;
   font-weight: normal;
   line-height: 1.111;
 }
 
-.button .smallInfo {
+.button.smallInfo {
   font-size: x-large;
   align-items: center;
   font-weight: normal;
   line-height: 1.111;
-  background: red;
+  background: #f0f4f7;
 }
 
 .button:hover,

@@ -46,7 +46,7 @@ export default function HomeContent(): ReactElement {
   console.log(`${styles.subtitleGrey}`)
   return (
     <Container className={styles.wrapper}>
-      <div style={{ display: 'flex' }}>
+      <div className={styles.containerMain}>
         <div className={styles.teaser}>
           <span className={styles.subtitleGrey}>{teaser.caption}</span>
           <h2>{teaser.title}</h2>
@@ -60,7 +60,7 @@ export default function HomeContent(): ReactElement {
             </div>
           </div>
           {teasers.map((teaserItem, index) => (
-            <div key={index} style={{ marginTop: '1.5em' }}>
+            <div key={index} className={styles.teaserWrapper}>
               <span className={styles.subtitleGrey}>{teaserItem.caption}</span>
               <h2>{teaserItem.title}</h2>
               <div>
@@ -74,25 +74,19 @@ export default function HomeContent(): ReactElement {
                         <div className={styles.valuesIconWrapper}>
                           <img
                             src={`images/clinical-research/${elem.icon}`}
-                            style={{
-                              maxWidth: '100%',
-                              display: 'inline-block'
-                            }}
+                            className={styles.clinicalResearchValuesIconImage}
                             alt={'logo'}
                           />
                         </div>
                         <div
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column'
-                          }}
+                          className={styles.clinicalResearchValueTextContainer}
                         >
-                          <p
-                            style={{ fontWeight: 'bold', marginBottom: '1em' }}
-                          >
+                          <p className={styles.clinicalResearchValueTextHeader}>
                             {elem.title}
                           </p>
-                          <p style={{ fontStyle: 'italic' }}>{elem.text}</p>
+                          <p className={styles.clinicalResearchValueTextText}>
+                            {elem.text}
+                          </p>
                         </div>
                       </div>
                     ))}
