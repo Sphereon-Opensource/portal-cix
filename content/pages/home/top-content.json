@@ -2,7 +2,7 @@
   "teaser": {
     "caption": "PRIVACY-PRESERVING EXCHANGE",
     "title": "Enabling secondary use of clinical research data",
-    "text": "More than 60,000 clinical trials are initiated each year, but collected data is often used only for the purpose of a single study because of confidentiality and privacy concerns, and due to a lack of infrastructure and incentives for exchanging data. Triall CIX offers a platform for secure exchange and reuse of clinical research data across currently siloed environments. CIX interfaces with eClinical solutions and other health information systems used to collect and store research data. Uniquely, CIX enables users to exchange data and insights without having to share or otherwise expose underlying data resources, leveraging a combination of blockchain, self-sovereign identity (SSI) and privacy-enhancing technologies.",
+    "text": "More than 60,000 clinical trials are initiated each year, but collected data is often used only for the purpose of a single study because of confidentiality and privacy concerns, and due to a lack of infrastructure and incentives for exchanging data.\n\nTriall CIX offers a platform for secure exchange and reuse of clinical research data across currently siloed environments. CIX interfaces with eClinical solutions and other health information systems used to collect and store research data.\n\nUniquely, CIX enables users to exchange data and insights without having to share or otherwise expose underlying data resources, leveraging a combination of blockchain, self-sovereign identity (SSI) and privacy-enhancing technologies.",
     "button": {
       "text": "More about CIX and its technologies",
       "link": "link"

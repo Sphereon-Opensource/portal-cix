@@ -1,10 +1,11 @@
 .container {
-  --grid-layout-gap: calc(var(--spacer) / 2);
+  --grid-layout-gap-h: calc(var(--spacer) / 1);
+  --grid-layout-gap-v: calc(var(--spacer) / 1.2);
   --grid-column-count: 4;
   --grid-item-min-width: 10rem;
 
   --gap-count: calc(var(--grid-column-count) - 1);
-  --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+  --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap-h));
   --grid-item-max-width: calc(
     (100% - var(--total-gap-width)) / var(--grid-column-count)
   );
@@ -14,7 +15,7 @@
     auto-fill,
     minmax(max(var(--grid-item-min-width), var(--grid-item-max-width)), 1fr)
   );
-  grid-gap: var(--grid-layout-gap);
+  grid-gap: var(--grid-layout-gap-v) var(--grid-layout-gap-h);
   justify-items: center;
   padding: var(--spacer) 0;
 }

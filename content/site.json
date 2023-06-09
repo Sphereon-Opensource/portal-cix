@@ -9,12 +9,12 @@
       "name": "About",
       "subItems": [
         {
-          "name": "This demo",
+          "name": "CIX",
           "link": "/about"
         },
         {
-          "name": "Gaia-X",
-          "link": "/gaia-x"
+          "name": "Triall",
+          "link": "/triall"
         }
       ]
     },
@@ -38,8 +38,8 @@
   "footer": {
     "designedBy": "Designed by The Goodplace",
     "links": [
-      { "label": "About this demo", "link": "/about" },
-      { "label": "About Gaia-X", "link": "/gaia-x" },
+      { "label": "About CX", "link": "/about" },
+      { "label": "About Triall", "link": "/triall" },
       {
         "label": "Catalogue",
         "link": "/search?sort=nft.created&sortOrder=desc"

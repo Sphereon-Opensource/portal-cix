@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import Page from '@components/@shared/Page'
-import GaiaX from '../components/GaiaX'
+import Triall from '../components/Triall'
 import { useRouter } from 'next/router'
 
 export default function PageGaiaX(): ReactElement {
@@ -8,7 +8,7 @@ export default function PageGaiaX(): ReactElement {
 
   return (
     <Page uri={router.route}>
-      <GaiaX />
+      <Triall />
     </Page>
   )
 }

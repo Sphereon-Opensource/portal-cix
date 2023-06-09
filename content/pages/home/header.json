@@ -1,11 +1,11 @@
 {
-  "body": "The Clinical Insights Exchange (CIX) is a federated data platform where \nbiopharma professionals, clinicians, and data scientists can exchange clinical \ndata assets and analytics services in a trusted, privacy-friendly environment.",
+  "body": "The Clinical Insights Exchange (CIX) is a federated data platform where biopharma professionals, clinicians, and data scientists can exchange clinical data assets and analytics services in a trusted, privacy-friendly environment.",
   "cta": [
+    { "label": "Learn more", "link": "/about" },
     {
       "label": "View catalogue",
       "link": "/search?sort=_score&sortOrder=desc&text="
-    },
-    { "label": "Learn more", "link": "/about" }
+    }
   ],
   "carousel": [
     "/images/headerCarousel/63b30ef26b8875402682c16a_triall-hero-3.png",

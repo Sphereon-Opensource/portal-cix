@@ -1,0 +1,28 @@
+{
+  "title": "Clinical Insights Exchange",
+  "topSection": [
+    {
+      "text": "Actionable insights from research data.\nOpen, verifiable, privacy-preserving.\n\n60,000+ clinical trials are initiated each year. Unfortunately, collected research data is often only used for the purpose of a single study. Sponsors are reluctant to exchange data, as scalable solutions for self-sovereign and privacy-preserving exchange are lacking.\n\nTriall and partners are developing a federated data marketplace for the exchange of clinical trial data without sharing or exposing underlying data resources.",
+      "interactivity": {
+        "image": "/images/video-placeholder-1.png",
+        "link": "https://youtu.be/DrG-EBBFniw"
+      },
+      "cta": {
+        "label": "Keep me informed",
+        "link": "https://www.triall.io/subscribe"
+      }
+    }
+  ],
+  "hero": {
+    "header": "This demo environment is aiming to bring the Gaia-X concepts and federation services to live in the context of the mobility sector. In the upcoming months this environment can be used to demonstrate, explain and test powerful Gaia-X concepts like:",
+    "points": [
+      "- Self-Descriptions",
+      "- Labels",
+      "- Federated Catalogue",
+      "- Identity & Trust Services",
+      "- Sovereign Data Exchange (incl smart contracts, logging and audit trail)",
+      "- Policy Engines & Compliance Services"
+    ]
+  },
+  "image": "/images/headerCarousel/iStock-1182619274.jpg"
+}

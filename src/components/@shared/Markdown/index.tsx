@@ -20,19 +20,22 @@ const Markdown = ({
         `<img src="/images/image_blocked_placeholder.png" alt="Blocked image placeholder" class="${styles.blockedContentImage}" />`
       )
   const subContent = subtext ? markdownToHtml(subtext) : null
+  const mergedClassName = `${styles.markdown} ${className || ''}`
   return (
-    <div className={`${styles.markdown}`}>
+    <div className={mergedClassName}>
       <div
         dangerouslySetInnerHTML={{ __html: content }}
+        /*
         style={{
-          ...(className === 'getInvolved' && { color: 'white' }),
-          ...(className === 'firstTime' && { color: 'black' }),
-          ...{ fontSize: 'x-large' }
+          ...(className !== 'firstTime' && { color: 'black' }),
+          ...(className === 'firstTime' && { color: 'white' }),
+          ...{ fontSize: 'var(--font-size-base)', fontWeight: 'var(-font-weight-base)' }
         }}
+*/
       />
       {subContent && (
         <div
-          style={{ fontWeight: 'normal' }}
+          style={{ fontWeight: 'var(--font-weight-base)' }}
           className={styles.subtext} // add a class for subtext styling
           dangerouslySetInnerHTML={{ __html: subContent }}
         />

@@ -20,21 +20,21 @@
 }
 
 .button.getInvolved {
-  font-size: x-large;
+  font-size: var(--font-size-base);
   align-items: center;
   font-weight: normal;
   line-height: 1em;
 }
 
 .button.firstTime {
-  font-size: x-large;
+  font-size: var(--font-size-base);
   align-items: center;
   font-weight: normal;
   line-height: 1.111;
 }
 
 .button.smallInfo {
-  font-size: x-large;
+  font-size: var(--font-size-base);
   align-items: center;
   font-weight: normal;
   line-height: 1.111;

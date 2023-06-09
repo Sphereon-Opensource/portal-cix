@@ -55,7 +55,7 @@ export default function HighlightBox({
         </h3>
       </span>
       {style === 'getInvolved' ? (
-        <Markdown text={body} className={'getInvolved'} />
+        <Markdown text={body} className={styles.getInvolvedBody} />
       ) : (
         <Markdown text={body} />
       )}

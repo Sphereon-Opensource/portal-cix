@@ -33,7 +33,7 @@
   /* Menubar */
   --menu-logo-color: var(--color-primary);
   --menu-logo-color-hover: var(--color-primary);
-  --menu-logo-size-sm: 17rem;
+  --menu-logo-size-sm: 15rem;
   --menu-logo-size-lg: 20rem;
   --menu-font-color: var(--color-primary);
   --menu-font-color-active: var(--brand-blue-light);
@@ -82,15 +82,15 @@
   --button-active-font-color: var(--brand-white);
   --button-active-background: var(--font-color-light);
   --button-primary-font-color: var(--brand-white);
-  --button-primary-background: var(--brand-blue-dark);
+  --button-primary-background: var(--brand-triall-dark);
   --button-primary-border-color: var(--brand-blue-dark);
-  --button-primary-hover-font-color: var(--brand-blue-dark);
-  --button-primary-hover-background: var(--brand-white);
-  --button-ghost-font-color: var(--brand-white);
-  --button-ghost-background: var(--brand-blue-light);
-  --button-ghost-border-color: var(--brand-blue-lite);
-  --button-ghost-hover-font-color: var(--brand-blue-light);
-  --button-ghost-hover-background: var(--brand-white);
+  --button-primary-hover-font-color: var(--brand-white);
+  --button-primary-hover-background: var(--brand-triall-light);
+  --button-ghost-font-color: var(--brand-triall-dark);
+  --button-ghost-background: var(--brand-triall-catalogue);
+  --button-ghost-border-color: var(--brand-blue-light);
+  --button-ghost-hover-font-color: var(--brand-white);
+  --button-ghost-hover-background: var(--brand-triall-dark);
   --button-outline-font-color: var(--brand-blue-dark);
   --button-outline-background: var(--brand-white);
   --button-outline-border-color: var(--brand-blue-dark);
@@ -153,14 +153,14 @@
   --confetti-color-five: var(--brand-grey-lighter);
 
   --font-family-base: 'Overpass', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-  Helvetica, Arial, sans-serif;
+    Helvetica, Arial, sans-serif;
   --font-family-heading: 'Overpass', -apple-system, BlinkMacSystemFont,
-  'Segoe UI', Helvetica, Arial, sans-serif;
+    'Segoe UI', Helvetica, Arial, sans-serif;
   --font-family-monospace: 'Overpass Mono', 'Fira Mono', Menlo, Monaco, Consolas,
-  'Courier New', monospace;
+    'Courier New', monospace;
 
   --font-size-root: 15px;
-  --font-size-base: 1rem;
+  --font-size-base: 1.1rem;
   --font-size-large: 1.2rem;
   --font-size-small: 0.85rem;
   --font-size-mini: 0.65rem;
@@ -173,7 +173,8 @@
   --font-size-h4: 1.3rem;
   --font-size-h5: 1.1rem;
   --font-weight-light: 200;
-  --font-weight-base: 300;
+  --font-weight-base: 400;
+  --font-weight-semi-bold: 500;
   --font-weight-bold: 600;
   --line-height: 2;
 
@@ -188,7 +189,7 @@
 
   --break-point--small: 640px;
   --break-point--medium: 860px;
-  --break-point--large: 1140px;
+  --break-point--large: 1280px;
   --break-point--huge: 1400px;
 }
 

@@ -4,7 +4,8 @@
 
 .firstTimeContainer {
   padding: var(--spacer);
-  font-size: x-large;
+  max-width: 21.5em;
+  font-size: var(--font-size-base);
   background-color: var(--background-fill-light);
   border-radius: 0.5em;
 }
@@ -12,12 +13,15 @@
 .getInvolvedContainer {
   margin-top: 10em;
   margin-bottom: 5em;
-  font-size: x-large;
+  max-width: 21.5em;
+  font-size: var(--font-size-base);
   padding: var(--spacer);
   background-color: var(--brand-blue-dark);
   border-radius: 0.5em;
 }
-
+.getInvolvedBody {
+  color: var(--font-color-text-inverted);
+}
 .firstTimeButton {
   padding: var(--spacer);
   background-color: var(--background-fill-light);

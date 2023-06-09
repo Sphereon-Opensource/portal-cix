@@ -12,7 +12,7 @@ export default function Partners({
   className?: string
 }): ReactElement {
   const partners = require
-    .context('../../../../public/images/partners', false, /\.(png|jpe?g)$/)
+    .context('../../../../public/images/partners', false, /\.(png|webp|jpe?g)$/)
     .keys()
     .filter((e) => e.startsWith('./'))
     .map((x) => x.replace('./', ''))

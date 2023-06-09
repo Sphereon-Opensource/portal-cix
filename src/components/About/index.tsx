@@ -1,147 +1,102 @@
 import React, { ReactElement } from 'react'
 import styles from './index.module.css'
-import content from '../../../content/pages/aboutDemo.json'
+import TriallLogo from '@images/gaia-x-logo.svg'
+import GearIcon from '@images/gear_icon.svg'
+import ShoppingCartIcon from '@images/shopping_cart.svg'
+import CIXLogo from '@images/cix_working_logo.png'
+import content from '../../../content/pages/aboutCix.json'
 import Container from '@components/@shared/atoms/Container'
 import Markdown from '@components/@shared/Markdown'
-import Partners from '@components/@shared/Partners'
-import HighlightBox from '@components/Home/Content/HighlightBox'
-import highlightboxContent from '../../../content/pages/home/top-content.json'
-import Button from '@shared/atoms/Button'
+import Button from '@components/@shared/atoms/Button'
+import Image from 'next/image'
 
-interface AboutContent {
-  header?: {
-    title: string
-    body: string
-    linkedText: {
-      text: string
-      link: {
-        text: string
-        to: string
-        color: string
-      }
-    }
-  }
-  image?: string
-  points?: {
-    icon: string
-    title: string
-    text: string
-  }[]
-  button?: {
-    text: string
-    to: string
-  }
-  getInvolved?: {
-    title: string
-    text: string
-    buttonLabel: string
-    link: string
-  }
-  firstTimeVisiting?: {
-    title: string
-    text: string
-    buttonLabel: string
-    link: string
-  }
+const icons = {
+  gear: <GearIcon />,
+  cart: <ShoppingCartIcon />,
+  logo: <Image src={CIXLogo} alt="CIX Logo" />
 }
 
-export default function AboutPage(): ReactElement {
-  const { header, points, button, image }: AboutContent = content
-  const { firstTimeVisiting, getInvolved }: AboutContent = highlightboxContent
+interface TriallContent {
+  title: string
+  topSection: {
+    text: string
+    interactivity: {
+      image: string
+      link: string
+    }
+    cta: {
+      label: string
+      link: string
+    }
+  }[]
+  hero: {
+    header: string
+    points: string[]
+  }
+  footer: {
+    text: string
+    disclaimer: string
+    cards: {
+      title: string
+      body: string
+      icon: string
+    }[]
+  }
+  image: string
+}
+
+export default function TriallPage(): ReactElement {
+  const { title, topSection, hero, image }: TriallContent = content
+
   return (
-    <div className={`${styles.wrapper} ${styles.containerWide}`}>
-      <Container className={styles.mainContainer}>
-        <div className={styles.main}>
-          <div className={styles.content}>
-            <h2 className={styles.title}>{header.title}</h2>
-            <Markdown className={styles.body} text={header.body} />
-            <p>
-              {header.linkedText.text}
+    <div className={styles.wrapper}>
+      <div className={styles.media}>
+        <img src={image} className={styles.image} />
+      </div>
+      <Container className={styles.header}>
+        <h2 className={styles.title}>{title}</h2>
+        {topSection.map((section, i) => (
+          <div key={i} className={styles.section}>
+            <a
+              className={styles.desktopInteractivity}
+              href={section.interactivity.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={section.interactivity.image} />
+            </a>
+            <div className={styles.sectionText}>
+              <Markdown text={section.text} />
               <a
-                href={header.linkedText.link.to}
-                style={{ color: header.linkedText.link.color }}
+                className={styles.mobileInteractivity}
+                href={section.interactivity.link}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {header.linkedText.link.text}
+                <img src={section.interactivity.image} />
               </a>
-            </p>
-            <div>
-              {points.map((elem, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'flex-start',
-                    marginBottom: '0.5em'
-                  }}
-                >
-                  <div
-                    style={{
-                      marginRight: '1.5em',
-                      padding: '0.5em',
-                      backgroundColor: '#f0f4f7',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderRadius: '0.5em'
-                    }}
-                  >
-                    <img
-                      src={`images/clinical-research/${elem.icon}`}
-                      style={{ width: '4em' }}
-                      alt={'logo'}
-                    />
-                  </div>
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column'
-                    }}
-                  >
-                    <p style={{ fontWeight: 'bold', marginBottom: '1em' }}>
-                      {elem.title}
-                    </p>
-                    <p style={{ fontStyle: 'italic' }}>{elem.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div style={{ maxHeight: '0.5em' }}>
-              <Button to={button.to} style={'smallInfo'}>
-                {button.text}{' '}
-                <span className={styles.smallButtonLandingMain}> {'>'} </span>
+              <Button
+                style="primary"
+                href={section.cta.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {section.cta.label}
               </Button>
             </div>
           </div>
-        </div>
-        <div className={styles.secondarySection}>
-          <div className={styles.triallImage}>
-            <img src={`images/headerCarousel/${image}`} alt={'triall-iamge'} />
-          </div>
-          <div className={styles.points}>
-            <HighlightBox
-              icon="chat"
-              title={getInvolved.title}
-              body={getInvolved.text}
-              buttonLabel={getInvolved.buttonLabel}
-              link={getInvolved.link}
-              style={'getInvolved'}
-            />
-            <HighlightBox
-              icon="eye"
-              title={firstTimeVisiting.title}
-              body={firstTimeVisiting.text}
-              buttonLabel={firstTimeVisiting.buttonLabel}
-              link={firstTimeVisiting.link}
-              style={'firstTime'}
-            />
-          </div>
-        </div>
+        ))}
       </Container>
-      <div className={styles.partnersWrapper}>
-        <Container className={styles.partnersContainer}>
-          <h2 className={styles.partnersTitle}>Founding Partners:</h2>
-          <Partners className={styles.partners} />
+      <div className={styles.heroWrapper}>
+        <Container className={styles.heroContainer}>
+          <Markdown className={styles.heroHeader} text={hero.header} />
+          <ul>
+            {hero.points.map((point, i) => (
+              <li key={i}>
+                <Markdown text={point} />
+              </li>
+            ))}
+          </ul>
         </Container>
       </div>
     </div>

@@ -69,7 +69,7 @@ export default function Button({
         ...(style === 'firstTime' && { color: 'black', maxHeight: '1.5em' }),
         ...(style === 'smallInfo' && { color: 'black', maxHeight: '1em' }),
         ...{
-          fontSize: 'x-large',
+          fontSize: 'var(--font-size-base)',
           display: 'flex',
           alignItems: 'center',
           fontWeight: 'normal'

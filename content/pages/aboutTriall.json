@@ -14,17 +14,17 @@
   "image": "iStock-1182619274-cropped.jpg",
   "points": [
     {
-      "icon": "vision",
+      "icon": "eye.svg",
       "title": "Vision",
       "text": "Triall’s vision is to shape a digital ecosystem for clinical trials: a cross-system, multi-sided collaboration platform through which biopharma professionals, clinicians, patients, and other clinical trial stakeholders can collaborate and exchange research data and insights in a secure, verifiable, and self-sovereign way. This opens up ample opportunity for smarter, more-efficient, and truly patient-centric clinical research."
     },
     {
-      "icon": "Partners & Collaborators",
+      "icon": "noun-partnership-2013991.svg",
       "title": "Partners & Collaborators",
       "text": "In building out this digital ecosystem, Triall works with industry-leading organisations in the domains of clinical research, blockchain, Self-Sovereign Identity (SSI), Web3 standards, and secure computation. These include Mayo Clinic, Stanford University’s Human Perception Lab, Sphereon, Crucial Data Solutions, CR2O, Dutch Blockchain Coalition, and many more. To join our consortium of innovators, reach out to our team."
     },
     {
-      "icon": "Triall’s utility token TRL",
+      "icon": "noun-crypto-4680544.svg",
       "title": "Triall’s utility token TRL",
       "text": "The TRL token offers a platform-native means of payment for software and services and represents a key building block of Triall’s ecosystem vision, where it can coordinate fair, equitable, and peer-to-peer exchange of data resources between data providers, data consumers and computation service providers."
     }

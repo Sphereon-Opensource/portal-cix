@@ -1,7 +1,7 @@
 .container {
-  max-width: available;
-  margin-left: 15em;
-  margin-right: 5em;
+  max-width: var(--break-point--large);
+  margin-left: auto;
+  margin-right: auto;
   /*padding-left: calc(var(--spacer) / 3);*/
   /*padding-right: calc(var(--spacer) / 3);*/
   width: 90%;

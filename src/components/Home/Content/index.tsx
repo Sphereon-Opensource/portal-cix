@@ -49,7 +49,7 @@ export default function HomeContent(): ReactElement {
       <div className={styles.containerMain}>
         <div className={styles.teaser}>
           <span className={styles.subtitleGrey}>{teaser.caption}</span>
-          <h2>{teaser.title}</h2>
+          <h3>{teaser.title}</h3>
           <div className={styles.container}>
             <div className={styles.teaser}>
               <Markdown text={teaser.text} />
@@ -62,7 +62,7 @@ export default function HomeContent(): ReactElement {
           {teasers.map((teaserItem, index) => (
             <div key={index} className={styles.teaserWrapper}>
               <span className={styles.subtitleGrey}>{teaserItem.caption}</span>
-              <h2>{teaserItem.title}</h2>
+              <h3>{teaserItem.title}</h3>
               <div>
                 <div className={styles.container}>
                   <Markdown text={teaserItem.text} />
@@ -85,7 +85,7 @@ export default function HomeContent(): ReactElement {
                             {elem.title}
                           </p>
                           <p className={styles.clinicalResearchValueTextText}>
-                            {elem.text}
+                            {elem.text}h2
                           </p>
                         </div>
                       </div>
