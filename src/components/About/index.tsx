@@ -1,19 +1,17 @@
 import React, { ReactElement } from 'react'
 import styles from './index.module.css'
-import TriallLogo from '@images/gaia-x-logo.svg'
 import GearIcon from '@images/gear_icon.svg'
 import ShoppingCartIcon from '@images/shopping_cart.svg'
-import CIXLogo from '@images/cix_working_logo.png'
+import CIXLogo from '@images/CIX-logo-v2.svg'
 import content from '../../../content/pages/aboutCix.json'
 import Container from '@components/@shared/atoms/Container'
 import Markdown from '@components/@shared/Markdown'
 import Button from '@components/@shared/atoms/Button'
-import Image from 'next/image'
 
 const icons = {
   gear: <GearIcon />,
   cart: <ShoppingCartIcon />,
-  logo: <Image src={CIXLogo} alt="CIX Logo" />
+  logo: <CIXLogo />
 }
 
 interface TriallContent {

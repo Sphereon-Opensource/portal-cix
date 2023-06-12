@@ -52,7 +52,7 @@
 
 @media screen and (min-width: 70rem) {
   .menu {
-    padding: calc(var(--spacer) * 0.5) 0;
+    padding: 0;
   }
 }
 
