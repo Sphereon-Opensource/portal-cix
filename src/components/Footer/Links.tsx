@@ -35,12 +35,6 @@ export default function Links(): ReactElement {
       <div className={styles.section}>
         <p className={styles.title}>{privacyTitle}</p>
         <div className={styles.links}>
-          <Button to="/imprint" className={styles.link}>
-            Imprint
-          </Button>
-          <Button to={privacyPolicySlug} className={styles.link}>
-            Privacy
-          </Button>
           {appConfig.privacyPreferenceCenter === 'true' && (
             <Button
               className={styles.link}

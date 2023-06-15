@@ -1,15 +1,7 @@
 {
   "header": {
     "title": "About Triall",
-    "body": "Triall is a Dutch company that offers innovative software and services to organisations involved in clinical trials. Since 2018, the company has been spearheading the implementation of decentralised and privacy-enhancing technologies in clinical research.",
-    "linkedText": {
-      "text": "Member of the ",
-      "link": {
-        "text": "Mayo Clinic Innovation Exchange",
-        "to": "https://innovationexchange.mayoclinic.org/",
-        "color": "red"
-      }
-    }
+    "body": "Triall is a Dutch company that offers innovative software and services to organisations involved in clinical trials. Since 2018, the company has been spearheading the implementation of decentralised and privacy-enhancing technologies in clinical research.\n  _Member of the_ [_**Mayo Clinic Innovation Exchange**_](https://innovationexchange.mayoclinic.org)"
   },
   "image": "iStock-1182619274-cropped.jpg",
   "points": [

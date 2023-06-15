@@ -15,7 +15,7 @@
 }
 
 .teaser p {
-  margin-bottom: calc(var(--spacer) * 1.5);
+  margin-bottom: calc(var(--spacer) * 0.1);
 }
 
 .containerMain {
@@ -33,7 +33,7 @@
   text-transform: uppercase;
   margin-bottom: 2em;
   font-family: Open Sans, sans-serif;
-  font-size: 1em;
+  font-size: 0.8em;
   font-weight: 700;
   line-height: 1.111em;
 }
@@ -46,6 +46,7 @@
 .clinicalResearchValueTextContainer {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1em;
 }
 
 .clinicalResearchValueTextHeader {
@@ -58,9 +59,9 @@
 }
 
 .valuesIconWrapper {
-  width: 5em;
-  height: 5em;
-  min-width: 4em;
+  width: 3em;
+  height: 3em;
+  min-width: 2em;
   border-radius: 1.1em;
   justify-content: center;
   align-items: center;
@@ -78,6 +79,7 @@
 }
 
 .smallButtonLandingMain {
+  margin-top: 2px;
   margin-left: 1em;
   color: red;
   font-size: xx-large;

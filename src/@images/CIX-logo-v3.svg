@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Laag_1" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 505.02 343.17">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Overpass-Light, Overpass;
+        font-weight: 300;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        isolation: isolate;
+      }
+
+      .cls-1, .cls-3 {
+        fill: #14416f;
+        font-size: 46px;
+      }
+
+      .cls-6 {
+        fill: url(#Naamloos_verloop_3);
+      }
+
+      .cls-7 {
+        fill: url(#Naamloos_verloop_4);
+      }
+
+      .cls-8 {
+        font-family: ArialMT, Arial;
+        font-size: 12px;
+      }
+
+      .cls-2 {
+        fill: url(#Naamloos_verloop_2);
+        opacity: .8;
+      }
+
+      .cls-3 {
+        font-family: Overpass-Bold, Overpass;
+      }
+
+      .cls-3, .cls-4 {
+        font-weight: 700;
+      }
+
+      .cls-4 {
+        fill: #ccd8df;
+        font-family: OpenSans-Bold, 'Open Sans';
+        font-size: 17px;
+      }
+
+      .cls-9 {
+        fill: url(#Naamloos_verloop);
+      }
+    </style>
+    <linearGradient id="Naamloos_verloop" data-name="Naamloos verloop" x1="65.26" y1="128.37" x2="252.01" y2="128.37" gradientTransform="translate(0 344.87) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0253fe"/>
+      <stop offset="1" stop-color="#004df0"/>
+    </linearGradient>
+    <linearGradient id="Naamloos_verloop_2" data-name="Naamloos verloop 2" x1="252.01" y1="218.25" x2="65.08" y2="218.25" gradientTransform="translate(0 344.87) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#76eed9"/>
+      <stop offset="1" stop-color="#5eecfc"/>
+    </linearGradient>
+    <linearGradient id="Naamloos_verloop_3" data-name="Naamloos verloop 3" x1="0" y1="73.16" x2="72.1" y2="73.16" gradientTransform="translate(0 344.87) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f0f4f6"/>
+      <stop offset="1" stop-color="#f0f4f6"/>
+    </linearGradient>
+    <linearGradient id="Naamloos_verloop_4" data-name="Naamloos verloop 4" x1="0" y1="273.47" x2="72.1" y2="273.47" gradientTransform="translate(0 344.87) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0253fe"/>
+      <stop offset="1" stop-color="#004df0"/>
+    </linearGradient>
+  </defs>
+  <g id="Logomark">
+    <path id="Rounded_Rectangle_1" data-name="Rounded Rectangle 1" class="cls-9" d="m106.61,89.83l145.4,241.9c0,7.6-6.1,12.6-13.5,11.2l-82.2-15.2c-16.1-3-24.5-27-27.9-33.3-13.4-25-37.9-70.9-60.5-113.1-6.4-12.1-1.1-17.1,14.9-46.8,13.1-24.1,23.8-44.7,23.8-44.7h0Z"/>
+    <path id="Rounded_Rectangle_1_copy" data-name="Rounded Rectangle 1 copy" class="cls-2" d="m238.51.23l-81.1,15c-6.1,1.1-15.4,6-19.5,15.6,0,0-25.9,48.6-53.1,99.4-5.1,9.7-12,22.7-17.3,32.5-7.1,11.9,3.6,25.4,3.6,25.4l35.5,65.1L252.01,11.43c0-7.6-6.1-12.6-13.5-11.2h0Z"/>
+    <path id="Triangle_1" data-name="Triangle 1" class="cls-6" d="m29.01,235.73c2.5-4.6,8-4.1,10.6,1l31.2,61.2c3.3,6.5-.1,13.9-5.8,12.8l-59.1-10.9c-4.8-.9-7.5-8.7-4.9-13.5l28-50.6Z"/>
+    <path id="Triangle_1_copy" data-name="Triangle 1 copy" class="cls-7" d="m39.61,106.43c-2.6,5.1-8.1,5.5-10.6,1L1.01,56.83c-2.6-4.9.1-12.6,4.9-13.5l59.1-11c5.7-1,9.1,6.4,5.8,12.8l-31.2,61.3Z"/>
+  </g>
+  <g id="CIX.TRIALL.IO" class="cls-5">
+    <text class="cls-4" transform="translate(294.74 271.71)"><tspan x="0" y="0">C</tspan></text>
+    <text class="cls-4" transform="translate(313.57 271.71)"><tspan x="0" y="0">I</tspan></text>
+    <text class="cls-4" transform="translate(327.2 271.71)"><tspan x="0" y="0">X</tspan></text>
+    <text class="cls-4" transform="translate(346.53 271.71)"><tspan x="0" y="0">.</tspan></text>
+    <text class="cls-4" transform="translate(359.38 271.71)"><tspan x="0" y="0">T</tspan></text>
+    <text class="cls-4" transform="translate(377.23 271.71)"><tspan x="0" y="0">R</tspan></text>
+    <text class="cls-4" transform="translate(396.45 271.71)"><tspan x="0" y="0">I</tspan></text>
+    <text class="cls-4" transform="translate(410.08 271.71)"><tspan x="0" y="0">A</tspan></text>
+    <text class="cls-4" transform="translate(429.81 271.71)"><tspan x="0" y="0">L</tspan></text>
+    <text class="cls-4" transform="translate(447.41 271.71)"><tspan x="0" y="0">L</tspan></text>
+    <text class="cls-4" transform="translate(465.01 271.71)"><tspan x="0" y="0">.</tspan></text>
+    <text class="cls-4" transform="translate(477.86 271.71)"><tspan x="0" y="0">I</tspan></text>
+    <text class="cls-4" transform="translate(491.49 271.71)"><tspan x="0" y="0">O</tspan></text>
+  </g>
+  <g id="Clinical_Insights_Exchange" data-name="Clinical Insights Exchange" class="cls-5">
+    <text class="cls-3" transform="translate(294.01 117.78)"><tspan x="0" y="0">C</tspan></text>
+    <text class="cls-3" transform="translate(323.68 117.78)"><tspan x="0" y="0">l</tspan></text>
+    <text class="cls-3" transform="translate(338.42 117.78)"><tspan x="0" y="0">i</tspan></text>
+    <text class="cls-3" transform="translate(352.8 117.78)"><tspan x="0" y="0">n</tspan></text>
+    <text class="cls-3" transform="translate(381.38 117.78)"><tspan x="0" y="0">i</tspan></text>
+    <text class="cls-3" transform="translate(395.76 117.78)"><tspan x="0" y="0">c</tspan></text>
+    <text class="cls-3" transform="translate(421.91 117.78)"><tspan x="0" y="0">a</tspan></text>
+    <text class="cls-3" transform="translate(448.98 117.78)"><tspan x="0" y="0">l</tspan></text>
+    <text class="cls-8" transform="translate(463.72 117.78)"><tspan x="0" y="0"> </tspan></text>
+    <text class="cls-3" transform="translate(294.01 171.98)"><tspan x="0" y="0">I</tspan></text>
+    <text class="cls-3" transform="translate(309.81 171.98)"><tspan x="0" y="0">n</tspan></text>
+    <text class="cls-3" transform="translate(338.4 171.98)"><tspan x="0" y="0">s</tspan></text>
+    <text class="cls-3" transform="translate(362.71 171.98)"><tspan x="0" y="0">i</tspan></text>
+    <text class="cls-3" transform="translate(377.08 171.98)"><tspan x="0" y="0">g</tspan></text>
+    <text class="cls-3" transform="translate(405.25 171.98)"><tspan x="0" y="0">h</tspan></text>
+    <text class="cls-3" transform="translate(433.84 171.98)"><tspan x="0" y="0">t</tspan></text>
+    <text class="cls-3" transform="translate(453.46 171.98)"><tspan x="0" y="0">s</tspan></text>
+    <text class="cls-8" transform="translate(477.77 171.98)"><tspan x="0" y="0"> </tspan></text>
+    <text class="cls-1" transform="translate(294.01 226.08)"><tspan x="0" y="0">E</tspan></text>
+    <text class="cls-1" transform="translate(323.43 226.08)"><tspan x="0" y="0">x</tspan></text>
+    <text class="cls-1" transform="translate(347.14 226.08)"><tspan x="0" y="0">c</tspan></text>
+    <text class="cls-1" transform="translate(371.26 226.08)"><tspan x="0" y="0">h</tspan></text>
+    <text class="cls-1" transform="translate(399.02 226.08)"><tspan x="0" y="0">a</tspan></text>
+    <text class="cls-1" transform="translate(424.9 226.08)"><tspan x="0" y="0">n</tspan></text>
+    <text class="cls-1" transform="translate(452.66 226.08)"><tspan x="0" y="0">g</tspan></text>
+    <text class="cls-1" transform="translate(480.6 226.08)"><tspan x="0" y="0">e</tspan></text>
+  </g>
+</svg>

@@ -3,7 +3,7 @@
   "siteTagline": "Exchange clinical research data and\ninsights",
   "siteUrl": "https://portal.minimal-gaia-x.eu",
   "siteImage": "/share.png",
-  "copyright": "All Rights Reserved.",
+  "copyright": "Triall (Clinblocks B.V.) All rights reserved.",
   "menu": [
     {
       "name": "About",
@@ -36,9 +36,9 @@
     "ctd": "Please note that Compute-to-Data is still in alpha phase."
   },
   "footer": {
-    "designedBy": "Designed by The Goodplace",
+    "designedBy": "",
     "links": [
-      { "label": "About CX", "link": "/about" },
+      { "label": "About CIX", "link": "/about" },
       { "label": "About Triall", "link": "/triall" },
       {
         "label": "Catalogue",

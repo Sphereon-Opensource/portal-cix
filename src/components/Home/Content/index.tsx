@@ -55,7 +55,7 @@ export default function HomeContent(): ReactElement {
               <Markdown text={teaser.text} />
               <Button to={teaser.button.link} style={'smallInfo'}>
                 {teaser.button.text}{' '}
-                <span className={styles.smallButtonLandingMain}> {'>'} </span>
+                <span className={styles.smallButtonLandingMain}> {'›'} </span>
               </Button>
             </div>
           </div>

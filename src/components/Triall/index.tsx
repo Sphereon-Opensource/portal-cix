@@ -55,15 +55,17 @@ export default function AboutPage(): ReactElement {
           <div className={styles.content}>
             <h2 className={styles.title}>{header.title}</h2>
             <Markdown className={styles.body} text={header.body} />
-            <p>
-              {header.linkedText.text}
-              <a
-                href={header.linkedText.link.to}
-                style={{ color: header.linkedText.link.color }}
-              >
-                {header.linkedText.link.text}
-              </a>
-            </p>
+            {header.linkedText && (
+              <p>
+                {header.linkedText.text}
+                <a
+                  href={header.linkedText.link.to}
+                  style={{ color: header.linkedText.link.color }}
+                >
+                  {header.linkedText.link.text}
+                </a>
+              </p>
+            )}
             <div>
               {points.map((elem, idx) => (
                 <div
@@ -98,10 +100,10 @@ export default function AboutPage(): ReactElement {
                       flexDirection: 'column'
                     }}
                   >
-                    <p style={{ fontWeight: 'bold', marginBottom: '1em' }}>
+                    <p style={{ fontWeight: 'bold', marginBottom: '0em' }}>
                       {elem.title}
                     </p>
-                    <p style={{ fontStyle: 'italic' }}>{elem.text}</p>
+                    <p style={{ fontStyle: 'normal' }}>{elem.text}</p>
                   </div>
                 </div>
               ))}
@@ -109,7 +111,7 @@ export default function AboutPage(): ReactElement {
             <div style={{ maxHeight: '0.5em' }}>
               <Button to={button.to} style={'smallInfo'}>
                 {button.text}{' '}
-                <span className={styles.smallButtonLandingMain}> {'>'} </span>
+                <span className={styles.smallButtonLandingMain}> {'›'} </span>
               </Button>
             </div>
           </div>
@@ -138,12 +140,6 @@ export default function AboutPage(): ReactElement {
           </div>
         </div>
       </Container>
-      <div className={styles.partnersWrapper}>
-        <Container className={styles.partnersContainer}>
-          <h2 className={styles.partnersTitle}>Founding Partners:</h2>
-          <Partners className={styles.partners} />
-        </Container>
-      </div>
     </div>
   )
 }

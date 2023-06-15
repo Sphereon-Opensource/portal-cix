@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
-import LogoAsset from '@images/CIX-logo-v2.svg'
-import LogoAssetInverted from '@images/triall-logo-light.svg'
+import LogoAsset from '@images/CIX-logo-v3.svg'
+import LogoAssetInverted from '@images/CIX-logo-wit.svg'
 import styles from './index.module.css'
 import Image from 'next/image'
 

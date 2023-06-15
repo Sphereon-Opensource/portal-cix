@@ -52,7 +52,7 @@
 
 @media screen and (min-width: 70rem) {
   .menu {
-    padding: 0;
+    padding: 10px 0;
   }
 }
 
