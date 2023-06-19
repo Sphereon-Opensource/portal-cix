@@ -51,8 +51,7 @@
 .content {
   min-width: 60em;
   order: 2;
-  padding: 0;
-  padding-top: var(--spacer);
+  padding: var(--spacer) 6em 0 0;
 }
 
 .partnersWrapper {
@@ -64,6 +63,7 @@
 }
 
 .smallButtonLandingMain {
+  margin-top: 2px;
   margin-left: 1em;
   color: red;
   font-size: xx-large;
