@@ -1,11 +1,12 @@
 module.exports = {
   whitelists: {
     'nft.owner': [
-      '0xa98A6eefbAE870b88a9C7A43f4b50066A01c93b6',
-      '0xDa4fc9E82Ac4E44207a1f74137493D3437D80761'
+      /*'0xa98A6eefbAE870b88a9C7A43f4b50066A01c93b6',*/
+      '0xDa4fc9E82Ac4E44207a1f74137493D3437D80761',
+      '0x60acd96a148362D943b26E270F5E208764366D38'
     ],
     'datatokens.address': [
-      '0xa2E0747d1FA4006Eff891461758bC96F9cE864F2',
+      /*'0xa2E0747d1FA4006Eff891461758bC96F9cE864F2',
       '0xeDBb45Ba45EB6a56072eF224Ff944b7fBd84aE27',
       '0x9793Ea60ce9a9B809066ce3872e89c9442dDd4E6',
       '0x5000889c6ca759af6dd899fffb05392c0fe02cec',
@@ -23,11 +24,12 @@ module.exports = {
       '0x1f3f1ce4879e0d2319cd553eadcc7b1ef775177a',
       '0x59f93a71b3e3d9c3e94280bafcce49eb02191fdc',
       '0x6df7790e95e3bf4406dfc83f6856bc7869861a25',
-      '0xeab171bfd3ed54b29e97d6dfc92692f7c84da06f'
+      '0xeab171bfd3ed54b29e97d6dfc92692f7c84da06f',*/
+      '0x60acd96a148362D943b26E270F5E208764366D38'
     ]
   },
   featured: [
-    {
+    /* {
       title: 'Industry',
       assets: []
     },
@@ -38,7 +40,7 @@ module.exports = {
     {
       title: 'Science',
       assets: []
-    },
+    },*/
     {
       title: 'Health, Finance, Business Analytics, Energy and more',
       assets: []
