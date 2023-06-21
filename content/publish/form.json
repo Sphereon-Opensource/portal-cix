@@ -96,7 +96,7 @@
         "label": "Personally Identifiable Information",
         "type": "checkbox",
         "options": ["The dataset offered contains PII"],
-        "required": true
+        "required": false
       },
       {
         "name": "dataController",
