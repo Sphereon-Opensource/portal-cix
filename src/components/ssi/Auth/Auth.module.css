@@ -87,10 +87,3 @@ svg.caret {
     margin-right: calc(var(--spacer) / 6);
   }
 }
-
-.connectButton {
-  width: 9rem;
-  height: 4rem;
-  display: inline;
-  font-size: 1.0rem;
-}
