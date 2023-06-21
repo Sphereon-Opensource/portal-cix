@@ -1,6 +1,6 @@
 {
-  "name": "@deltadao/portal-fmdm",
-  "description": "Future Mobility Alliance Marketplace, based on Ocean Market",
+  "name": "@deltadao/portal-cix",
+  "description": "Triall CIX portal",
   "version": "1.0.0",
   "license": "Apache-2.0",
   "scripts": {
