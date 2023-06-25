@@ -111,6 +111,7 @@ export default function Button({
           : styleClasses
       }
       style={buttonStyle}
+      {...props}
     >
       {buttonContent}
     </button>
