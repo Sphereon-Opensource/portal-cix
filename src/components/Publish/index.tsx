@@ -284,6 +284,7 @@ export default function PublishPage({
             title={<Title networkId={values.user.chainId} />}
             description={content.description}
           />
+          <Wallet />
           <Form className={styles.form} ref={scrollToRef}>
             <Navigation />
             <Steps feedback={feedback} />
