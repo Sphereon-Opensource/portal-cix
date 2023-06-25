@@ -2,7 +2,8 @@ node_modules
 out
 .DS_Store
 .idea
-.env
+.env.local
+.env.production
 coverage
 .cache
 .next

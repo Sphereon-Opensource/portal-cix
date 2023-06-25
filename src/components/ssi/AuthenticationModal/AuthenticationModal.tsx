@@ -117,7 +117,7 @@ export default class AuthenticationModal extends Component<
                 >
                   Request a Guest credential via{' '}
                   <a
-                    href={process.env.NEXT_PUBLIC_OID4VCI_ISSSUE_FORM_LINK}
+                    href={process.env.NEXT_PUBLIC_OID4VCI_ISSUE_FORM_LINK}
                     rel="noreferrer"
                     target="_blank"
                     className={'modal-link'}
