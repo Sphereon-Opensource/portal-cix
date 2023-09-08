@@ -4,6 +4,7 @@ out
 .idea
 .env.local
 .env.production
+.env
 coverage
 .cache
 .next
