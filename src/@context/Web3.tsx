@@ -1,15 +1,19 @@
 import React, {
-  useContext,
-  useState,
-  useEffect,
   createContext,
   ReactElement,
   ReactNode,
-  useCallback
+  useCallback,
+  useContext,
+  useEffect,
+  useState
 } from 'react'
 import Web3 from 'web3'
 import Web3Modal, { getProviderInfo, IProviderInfo } from 'web3modal'
-import { infuraProjectId as infuraId } from '../../app.config'
+import {
+  infuraProjectId as infuraId,
+  isOIDCActivated,
+  isSiopActivated
+} from '../../app.config'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import { LoggerInstance } from '@oceanprotocol/lib'
 import { isBrowser } from '@utils/index'
@@ -22,8 +26,19 @@ import useNetworkMetadata, {
 import { useMarketMetadata } from './MarketMetadata'
 import { getTokenBalance } from '@utils/web3'
 import { getOpcsApprovedTokens } from '@utils/subgraph'
+import { isFeatureDisabled, isFeatureEnabled } from '@utils/features'
+import { provider as Web3CoreProvider } from 'web3-core'
+import {
+  createHeadlessWeb3Provider,
+  getHeadlessProviderRpcHost
+} from '../Provider'
+import { useOidcAuth } from '@components/Authentication/OIDC/oidcAuth'
+import { toast } from 'react-toastify'
 
+LoggerInstance.setLevel(3)
 interface Web3ProviderValue {
+  isOnlyWeb3Auth: boolean
+  headlessOnly: boolean
   web3: Web3
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   web3Provider: any
@@ -40,7 +55,7 @@ interface Web3ProviderValue {
   web3Loading: boolean
   isSupportedOceanNetwork: boolean
   approvedBaseTokens: TokenInfo[]
-  connect: () => Promise<void>
+  connect: (disconnect?: boolean) => Promise<void>
   logout: () => Promise<void>
 }
 
@@ -52,32 +67,12 @@ const web3ModalTheme = {
   hover: 'var(--background-highlight)'
 }
 
-const providerOptions = isBrowser
-  ? {
-      walletconnect: {
-        package: WalletConnectProvider,
-        options: {
-          infuraId,
-          rpc: {
-            137: 'https://polygon-rpc.com',
-            80001: 'https://rpc-mumbai.matic.today'
-          }
-        }
-      }
-    }
-  : {}
-
-export const web3ModalOpts = {
-  cacheProvider: true,
-  providerOptions,
-  theme: web3ModalTheme
-}
-
 const refreshInterval = 20000 // 20 sec.
 
 const Web3Context = createContext({} as Web3ProviderValue)
 
 function Web3Provider({ children }: { children: ReactNode }): ReactElement {
+  const { oidcUser } = useOidcAuth()
   const { networksList } = useNetworkMetadata()
   const { appConfig } = useMarketMetadata()
 
@@ -89,54 +84,167 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
   const [web3ProviderInfo, setWeb3ProviderInfo] = useState<IProviderInfo>()
   const [networkId, setNetworkId] = useState<number>()
   const [chainId, setChainId] = useState<number>()
+  const [accountId, setAccountId] = useState<string>()
   const [networkDisplayName, setNetworkDisplayName] = useState<string>()
   const [networkData, setNetworkData] = useState<EthereumListsChain>()
   const [block, setBlock] = useState<number>()
   const [isTestnet, setIsTestnet] = useState<boolean>()
-  const [accountId, setAccountId] = useState<string>()
   const [web3Loading, setWeb3Loading] = useState<boolean>(true)
-  const [balance, setBalance] = useState<UserBalance>({
-    eth: '0'
-  })
+  const [balance, setBalance] = useState<UserBalance>({})
   const [isSupportedOceanNetwork, setIsSupportedOceanNetwork] = useState(true)
   const [approvedBaseTokens, setApprovedBaseTokens] = useState<TokenInfo[]>()
+
+  const host = getHeadlessProviderRpcHost({ oidcUser })
+
+  console.log(`/web/headles enabled: ${isFeatureEnabled('/web3/headless')}`)
+  console.log(
+    `/web/wallet-selection disabled: ${isFeatureDisabled(
+      '/web3/wallet-selection'
+    )}`
+  )
+
+  const headlessOnly =
+    isFeatureEnabled('/web3/headless') &&
+    isFeatureDisabled('/web3/wallet-selection')
+  LoggerInstance.log('[web3] Headless only mode: ', headlessOnly)
+
+  if (headlessOnly && !host) {
+    toast.error('Please login first.')
+  }
+
+  const onlyWeb3 = !isOIDCActivated && !isSiopActivated
+  LoggerInstance.log('[web3] Is only web3 auth', onlyWeb3)
+  const hasWalletSelection = isFeatureEnabled('/web3/wallet-selection')
+  LoggerInstance.log('[web3] has wallet selection', hasWalletSelection)
+  const headlessProviderOptions = isFeatureEnabled('/web3/headless')
+    ? {
+        'custom-sphereon': {
+          package: true, // Needed to make it show up, because of the brittle web3Model logic
+          display: {
+            name:
+              process.env.NEXT_PUBLIC_WEB3_HEADLESS_PROVIDER_NAME ?? 'Sphereon',
+            logo:
+              process.env.NEXT_PUBLIC_WEB3_HEADLESS_PROVIDER_LOGO ??
+              '/images/sphereon-logo.jpg',
+            description:
+              process.env.NEXT_PUBLIC_WEB3_HEADLESS_PROVIDER_DESCRIPTION ??
+              'Sphereon wallet. No plugins required!'
+          },
+          connector: async (_: any, opts?: any) =>
+            createHeadlessWeb3Provider(opts),
+          options: {
+            host
+          }
+        }
+      }
+    : {}
+
+  const providerOptions = isBrowser
+    ? {
+        ...headlessProviderOptions,
+        walletconnect: {
+          package: WalletConnectProvider,
+          options: {
+            infuraId,
+            rpc: {
+              137: 'https://polygon-rpc.com',
+              80001: 'https://rpc-mumbai.matic.today'
+            }
+          }
+        }
+      }
+    : {}
+  const web3ModalOpts = {
+    cacheProvider: true,
+    providerOptions,
+    theme: web3ModalTheme
+  }
+
+  // -----------------------------------
+  // Logout helper
+  // -----------------------------------
+  async function logout() {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    if ((web3?.currentProvider as any)?.close) {
+      await (web3.currentProvider as any).close()
+    }
+    /* eslint-enable @typescript-eslint/no-explicit-any */
+
+    web3Modal.clearCachedProvider()
+  }
 
   // -----------------------------------
   // Helper: connect to web3
   // -----------------------------------
-  const connect = useCallback(async () => {
-    if (!web3Modal) {
-      setWeb3Loading(false)
-      return
-    }
-    try {
-      setWeb3Loading(true)
-      LoggerInstance.log('[web3] Connecting Web3...')
+  const connect = useCallback(
+    async (disconnect?: boolean) => {
+      if (disconnect && web3Modal && web3) {
+        try {
+          logout()
+        } catch (error) {}
+      }
+      if (!web3Modal) {
+        setWeb3Loading(false)
+        return
+      }
+      try {
+        setWeb3Loading(true)
+        LoggerInstance.log('[web3] Connecting Web3...')
 
-      const provider = await web3Modal?.connect()
-      setWeb3Provider(provider)
+        let provider: Web3CoreProvider | undefined = web3Provider
+        if (hasWalletSelection) {
+          provider = await web3Modal?.connect()
+        } else if (headlessOnly) {
+          LoggerInstance.log('[web3] Connecting Web3 headless provider ...')
+          provider = await web3Modal.connectTo('custom-sphereon')
+          LoggerInstance.log('[web3] Web3 headless provider connected')
+        }
+        if (!provider && !hasWalletSelection) {
+          toast.error(
+            'Could not get the provider and wallet selection is not enabled. Contact support please'
+          )
+          return
+        } else if (
+          provider &&
+          isSphereonProvider(provider) &&
+          !provider.isConnected
+        ) {
+          try {
+            await new Web3(provider).eth.requestAccounts()
+          } catch (error) {
+            LoggerInstance.log(`ERROR:`, error)
+            toast.error(
+              'Could not connect to the web3 provider. Please connect with another wallet'
+            )
+            await logout()
+            return
+          }
+        }
+        setWeb3Provider(provider)
 
-      const web3 = new Web3(provider)
-      setWeb3(web3)
-      LoggerInstance.log('[web3] Web3 created.', web3)
+        const web3 = new Web3(provider)
+        setWeb3(web3)
+        LoggerInstance.log('[web3] Web3 created.', web3)
 
-      const networkId = await web3.eth.net.getId()
-      setNetworkId(networkId)
-      LoggerInstance.log('[web3] network id ', networkId)
+        const accountId = (await web3.eth.getAccounts())[0]
+        setAccountId(accountId)
+        LoggerInstance.log('[web3] account id', accountId)
 
-      const chainId = await web3.eth.getChainId()
-      setChainId(chainId)
-      LoggerInstance.log('[web3] chain id ', chainId)
+        const networkId = await web3.eth.net.getId()
+        setNetworkId(networkId)
+        LoggerInstance.log('[web3] network id ', networkId)
 
-      const accountId = (await web3.eth.getAccounts())[0]
-      setAccountId(accountId)
-      LoggerInstance.log('[web3] account id', accountId)
-    } catch (error) {
-      LoggerInstance.error('[web3] Error: ', error.message)
-    } finally {
-      setWeb3Loading(false)
-    }
-  }, [web3Modal])
+        const chainId = await web3.eth.getChainId()
+        setChainId(chainId)
+        LoggerInstance.log('[web3] chain id ', chainId)
+      } catch (error) {
+        LoggerInstance.error('[web3] Error:::: ', error.message, error)
+      } finally {
+        setWeb3Loading(false)
+      }
+    },
+    [web3Modal]
+  )
 
   // -----------------------------------
   // Helper: Get approved base tokens list
@@ -155,14 +263,16 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
   // Helper: Get user balance
   // -----------------------------------
   const getUserBalance = useCallback(async () => {
-    if (!accountId || !networkId || !web3 || !networkData) return
+    if (!accountId || !networkId || !web3 || !networkData) {
+      return
+    }
 
     try {
       const userBalance = web3.utils.fromWei(
         await web3.eth.getBalance(accountId, 'latest')
       )
-      const key = networkData.nativeCurrency.symbol.toLowerCase()
-      const balance: UserBalance = { [key]: userBalance }
+      const userToken = networkData.nativeCurrency.symbol.toLowerCase()
+      const newBalance: UserBalance = { [userToken]: userBalance }
 
       if (approvedBaseTokens?.length > 0) {
         await Promise.all(
@@ -174,15 +284,13 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
               address,
               web3
             )
-            balance[symbol.toLocaleLowerCase()] = tokenBalance
+            newBalance[symbol.toLocaleLowerCase()] = tokenBalance
           })
         )
       }
-
-      setBalance(balance)
-      LoggerInstance.log('[web3] Balance: ', balance)
+      setBalance(newBalance)
     } catch (error) {
-      LoggerInstance.error('[web3] Error: ', error.message)
+      LoggerInstance.error('[web3] Error: ', error.message, error)
     }
   }, [accountId, approvedBaseTokens, networkId, web3, networkData])
 
@@ -204,6 +312,7 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
         web3ModalInstance
       )
     }
+
     init()
   }, [connect, web3Modal])
 
@@ -212,14 +321,18 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
   // -----------------------------------
   useEffect(() => {
     if (!web3Modal?.cachedProvider) return
+    // else if (isSphereonProvider(web3Provider)) return
 
     async function connectCached() {
+      if (!web3Modal?.cachedProvider) return
+      // else if (isSphereonProvider(web3Provider)) return
       LoggerInstance.log(
         '[web3] Connecting to cached provider: ',
         web3Modal.cachedProvider
       )
       await connect()
     }
+
     connectCached()
   }, [connect, web3Modal])
 
@@ -238,10 +351,11 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
     getUserBalance()
 
     // init periodic refresh of wallet balance
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const balanceInterval = setInterval(() => getUserBalance(), refreshInterval)
 
     return () => {
-      clearInterval(balanceInterval)
+      clearTimeout(balanceInterval)
     }
   }, [getUserBalance])
 
@@ -274,13 +388,14 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
   // Get and set latest head block
   // -----------------------------------
   useEffect(() => {
-    if (!web3) return
+    if (!web3 || !web3Provider) return
 
     async function getBlock() {
       const block = await web3.eth.getBlockNumber()
       setBlock(block)
       LoggerInstance.log('[web3] Head block: ', block)
     }
+
     getBlock()
   }, [web3, networkId])
 
@@ -297,18 +412,6 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
   }, [web3Provider])
 
   // -----------------------------------
-  // Logout helper
-  // -----------------------------------
-  async function logout() {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    if ((web3?.currentProvider as any)?.close) {
-      await (web3.currentProvider as any).close()
-    }
-    /* eslint-enable @typescript-eslint/no-explicit-any */
-
-    await web3Modal.clearCachedProvider()
-  }
-  // -----------------------------------
   // Get valid Networks and set isSupportedOceanNetwork
   // -----------------------------------
 
@@ -321,8 +424,21 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
   }, [networkId, appConfig.chainIdsSupported])
 
   // -----------------------------------
+  // Check user network against asset network
+  // -----------------------------------
+  useEffect(() => {
+    if (headlessOnly) {
+      LoggerInstance.log(
+        '[web3] Connecting to web3 provider, given we are in headless only mode'
+      )
+      connect()
+    }
+  }, [headlessOnly])
+
+  // -----------------------------------
   // Handle change events
   // -----------------------------------
+
   async function handleChainChanged(chainId: string) {
     LoggerInstance.log('[web3] Chain changed', chainId)
     const networkId = await web3.eth.net.getId()
@@ -342,9 +458,26 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
     setAccountId(accounts[0])
   }
 
-  useEffect(() => {
-    if (!web3Provider || !web3) return
+  function isSphereonProvider(provider: any) {
+    const isSphereonAgent =
+      typeof provider === 'object' &&
+      'httpAgent' in provider &&
+      provider.host ===
+        process.env.NEXT_PUBLIC_WEB3_HEADLESS_PROVIDER_HOST_AUTHENTICATED
+    LoggerInstance.log('[web3] Is sphereon agent: ', isSphereonAgent)
+    return isSphereonAgent
+  }
 
+  useEffect(() => {
+    // todo Probably wise to only disable in case the wallet selection is anything but the headless provider
+
+    if (
+      !web3Provider ||
+      !web3 ||
+      headlessOnly ||
+      isSphereonProvider(web3Provider)
+    )
+      return
     web3Provider.on('chainChanged', handleChainChanged)
     web3Provider.on('networkChanged', handleNetworkChanged)
     web3Provider.on('accountsChanged', handleAccountsChanged)
@@ -364,6 +497,8 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
         web3Provider,
         web3Modal,
         web3ProviderInfo,
+        isOnlyWeb3Auth: onlyWeb3,
+        headlessOnly,
         accountId,
         balance,
         networkId,

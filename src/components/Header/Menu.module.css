@@ -34,13 +34,14 @@
   display: flex;
   gap: calc(var(--spacer) / 3);
   margin-left: auto;
-
 }
 
 @media screen and (min-width: 70rem) {
   .navigation {
     order: 2;
-    width: auto;
+    width: 43%;
+    display: flex;
+    justify-content: space-between;
     margin: 0;
     text-align: left;
     border: none;
@@ -53,7 +54,7 @@
 
 @media screen and (min-width: 70rem) {
   .menu {
-    padding: 10px 0;
+    padding: calc(var(--spacer) * 1.2) 0;
   }
 }
 
@@ -81,8 +82,8 @@
   composes: text from '../@shared/atoms/Button/index.module.css';
 
   color: var(--menu-font-color);
-  font-weight: normal;
-  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bolder);
+  font-size: var(--menu-link-font-size);
 }
 
 .link,
@@ -131,7 +132,7 @@
 }
 
 .logo svg {
-  margin-right: calc(var(--spacer) / 3);
+  margin-right: calc(var(--spacer) * 10);
 }
 
 .actions button {

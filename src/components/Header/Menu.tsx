@@ -8,11 +8,14 @@ import { useRouter } from 'next/router'
 import { useMarketMetadata } from '@context/MarketMetadata'
 import classNames from 'classnames/bind'
 import MenuDropdown from '@components/@shared/MenuDropdown'
-import SearchButton from './SearchButton'
 import Button from '@components/@shared/atoms/Button'
 import Container from '@components/@shared/atoms/Container'
-import Auth from '@components/ssi/Auth/Auth'
-import { AuthorizationResponsePayload } from '@sphereon/did-auth-siop'
+import Auth from '@components/Authentication/Auth'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store'
+import { AuthenticationStatus } from '@components/Authentication/authentication.types'
+import UserPreferences from '@components/Header/UserPreferences'
+import { isFeatureDisabled, isFeatureEnabled } from '@utils/features'
 
 const Wallet = loadable(() => import('./Wallet'))
 
@@ -47,45 +50,53 @@ export function MenuLink({ name, link, className }: MenuItem) {
   )
 }
 
-export default function Menu({
-  setShow,
-  payload,
-  setPayload
-}: {
-  setShow: React.Dispatch<React.SetStateAction<boolean>>
-  payload: AuthorizationResponsePayload
-  setPayload: React.Dispatch<React.SetStateAction<AuthorizationResponsePayload>>
-}): ReactElement {
+export default function Menu(): ReactElement {
   const { appConfig, siteContent } = useMarketMetadata()
+  const authenticationStatus = useSelector(
+    (state: RootState) => state.authentication.authenticationStatus
+  )
 
   return (
     <Container>
       <nav className={styles.menu}>
         <Link href="/" className={styles.logo}>
-          <Logo />
+          <Logo
+            style={{
+              width: '20rem',
+              height: '5rem'
+            }}
+          />
         </Link>
 
         <ul className={styles.navigation}>
-          {siteContent?.menu.map((item: MenuItem) => (
-            <li key={item.name}>
-              {item?.subItems ? (
-                <MenuDropdown label={item.name} items={item.subItems} />
-              ) : (
-                <MenuLink {...item} />
-              )}
-            </li>
-          ))}
+          {siteContent?.menu.map((item: MenuItem) => {
+            if (
+              item.name === 'Publish' &&
+              authenticationStatus === AuthenticationStatus.NOT_AUTHENTICATED
+            ) {
+              return null
+            }
+
+            return (
+              <li key={item.name}>
+                {item?.subItems ? (
+                  <MenuDropdown label={item.name} items={item.subItems} />
+                ) : (
+                  <MenuLink {...item} />
+                )}
+              </li>
+            )
+          })}
+          <li>
+            <Auth className={styles.link} />
+          </li>
         </ul>
 
-        <div className={styles.actions}>
-          <SearchButton />
+        <span className={styles.actions}>
           {appConfig.chainIdsSupported.length > 1 && <Networks />}
-          <Auth
-            setShow={() => setShow(true)}
-            payload={payload}
-            setPayload={setPayload}
-          />
-        </div>
+          {isFeatureDisabled('/ui/menu/wallet') || <Wallet />}
+          {isFeatureEnabled('/ui/menu/prefs') && <UserPreferences />}
+        </span>
       </nav>
     </Container>
   )

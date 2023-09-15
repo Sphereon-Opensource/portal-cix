@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
+
 import { BallTriangle } from 'react-loader-spinner'
 import {
   AuthorizationResponseStateStatus,
@@ -12,25 +15,29 @@ import {
   ValueResult
 } from '@sphereon/ssi-sdk.qr-code-generator'
 
-import { AuthorizationResponsePayload } from '@sphereon/did-auth-siop'
-import agent from '@components/ssi/AuthenticationModal/agent'
+import agent from '@components/Authentication/SIOP/agent'
 import Debug from 'debug'
-import { DEFINITION_ID_REQUIRED_ERROR } from '@components/ssi/AuthenticationModal/constants'
+import { DEFINITION_ID_REQUIRED_ERROR } from '@components/Authentication/constants'
+import { AuthenticationStatus } from '@components/Authentication/authentication.types'
+import { setAuthState } from '../../../store/actions/authentication.actions'
 
 const debug = Debug('sphereon:portal:ssi:AuthenticationQR')
 
+interface DispatchProps {
+  setAuthState: (authState: AuthenticationStatus) => void
+}
+
 export type AuthenticationQRProps = {
   onAuthRequestRetrieved: () => void
-  onSignInComplete: (payload: AuthorizationResponsePayload) => void
   setQrCodeData: (text: string) => void
-}
+} & DispatchProps
 
 export interface AuthenticationQRState {
   authRequestURIResponse?: GenerateAuthRequestURIResponse
   qrCode?: JSX.Element
 }
 
-export default class AuthenticationQR extends Component<AuthenticationQRProps> {
+class AuthenticationQR extends Component<AuthenticationQRProps> {
   state: AuthenticationQRState = {}
 
   private registerStateSent = false
@@ -152,18 +159,29 @@ export default class AuthenticationQR extends Component<AuthenticationQRProps> {
   private pollAuthStatus = async (
     authRequestURIResponse: GenerateAuthRequestURIResponse
   ) => {
-    let pollingResponse = await agent.siopClientGetAuthStatus({
-      correlationId: authRequestURIResponse?.correlationId,
-      definitionId: authRequestURIResponse.definitionId
-    })
+    const fetchAuthStatus = async () => {
+      return await agent.siopClientGetAuthStatus({
+        correlationId: this.state?.authRequestURIResponse?.correlationId,
+        definitionId: this.state?.authRequestURIResponse?.definitionId
+      })
+    }
+
+    let pollingResponse = await fetchAuthStatus()
+
     const interval = setInterval(async () => {
       const authStatus: AuthStatusResponse = pollingResponse
+
+      // If QR code doesn't exist, regenerate and exit.
       if (!this.state.qrCode) {
         clearInterval(interval)
         return this.generateNewQRCode()
-      } else if (!authStatus) {
-        return
-      } else if (this.timedOutRequestMappings.has(this.state)) {
+      }
+
+      // If no auth status, skip this iteration.
+      if (!authStatus) return
+
+      // Handle timed out auth request.
+      if (this.timedOutRequestMappings.has(this.state)) {
         try {
           debug('Cancelling timed out auth request.')
           await agent.siopClientRemoveAuthRequestState({
@@ -177,23 +195,32 @@ export default class AuthenticationQR extends Component<AuthenticationQRProps> {
           return Promise.reject(authStatus.error ?? pollingResponse)
         }
       }
-      if (authStatus.status === AuthorizationResponseStateStatus.SENT) {
-        this.props.onAuthRequestRetrieved()
-      } else if (
-        authStatus.status === AuthorizationResponseStateStatus.VERIFIED &&
-        authStatus.payload
-      ) {
-        clearInterval(interval)
-        return this.props.onSignInComplete(authStatus.payload)
-      } else {
-        debug(`status during polling: ${JSON.stringify(authStatus)}`)
+
+      switch (authStatus.status) {
+        case AuthorizationResponseStateStatus.SENT:
+          this.props.onAuthRequestRetrieved()
+          break
+        case AuthorizationResponseStateStatus.VERIFIED:
+          if (authStatus.payload) {
+            clearInterval(interval)
+            this.props.setAuthState(AuthenticationStatus.SIOP)
+            return
+          }
+          break
+        default:
+          debug(`status during polling: ${JSON.stringify(authStatus)}`)
       }
-      // Use the state, as that gets updated by the qr code
-      pollingResponse = await agent.siopClientGetAuthStatus({
-        correlationId: this.state?.authRequestURIResponse?.correlationId,
-        definitionId: this.state?.authRequestURIResponse?.definitionId
-      })
+
+      pollingResponse = await fetchAuthStatus()
       debug(JSON.stringify(pollingResponse))
     }, 2000)
   }
 }
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  setAuthState: (authState: AuthenticationStatus) => {
+    dispatch(setAuthState(authState))
+  }
+})
+
+export default connect(null, mapDispatchToProps)(AuthenticationQR)

@@ -1,18 +1,18 @@
 import React, {
-  useContext,
-  useState,
-  useEffect,
   createContext,
   ReactElement,
+  ReactNode,
   useCallback,
-  ReactNode
+  useContext,
+  useEffect,
+  useState
 } from 'react'
 import { Config, LoggerInstance, Purgatory } from '@oceanprotocol/lib'
 import { CancelToken } from 'axios'
 import { getAsset } from '@utils/aquarius'
 import { useWeb3 } from './Web3'
 import { useCancelToken } from '@hooks/useCancelToken'
-import { getOceanConfig, getDevelopmentConfig } from '@utils/ocean'
+import { getDevelopmentConfig, getOceanConfig } from '@utils/ocean'
 import { getAccessDetails } from '@utils/accessDetailsAndPricing'
 import { useIsMounted } from '@hooks/useIsMounted'
 import { useMarketMetadata } from './MarketMetadata'
@@ -55,7 +55,7 @@ function AssetProvider({
 }): ReactElement {
   const { appConfig } = useMarketMetadata()
 
-  const { chainId, accountId } = useWeb3()
+  const { chainId, accountId, headlessOnly, connect } = useWeb3()
   const { isDDOWhitelisted } = useAddressConfig()
   const [isInPurgatory, setIsInPurgatory] = useState(false)
   const [purgatoryData, setPurgatoryData] = useState<Purgatory>()

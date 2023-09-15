@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement } from 'react'
 import Alert from '@shared/atoms/Alert'
 import Footer from '../Footer/Footer'
 import Header from '../Header'
@@ -10,8 +10,6 @@ import styles from './index.module.css'
 import { ToastContainer } from 'react-toastify'
 import contentPurgatory from '../../../content/purgatory.json'
 import { useMarketMetadata } from '@context/MarketMetadata'
-import { AuthorizationResponsePayload } from '@sphereon/did-auth-siop'
-import AuthenticationModal from '@components/ssi/AuthenticationModal/AuthenticationModal'
 
 export default function App({
   children
@@ -21,20 +19,13 @@ export default function App({
   const { siteContent, appConfig } = useMarketMetadata()
   const { accountId } = useWeb3()
   const { isInPurgatory, purgatoryData } = useAccountPurgatory(accountId)
-  const [show, setShow] = useState(false)
-  const [payload, setPayload] = useState<AuthorizationResponsePayload>()
-
-  function onSignInComplete(payload: AuthorizationResponsePayload): void {
-    setShow(false)
-    setPayload(payload)
-  }
 
   return (
     <div className={styles.app}>
       {siteContent?.announcement !== '' && (
         <AnnouncementBanner text={siteContent?.announcement} />
       )}
-      <Header setShow={setShow} payload={payload} setPayload={setPayload} />
+      <Header />
       {isInPurgatory && (
         <Alert
           title={contentPurgatory.account.title}
@@ -51,11 +42,6 @@ export default function App({
       )}
 
       <ToastContainer position="bottom-right" newestOnTop />
-      <AuthenticationModal
-        show={show}
-        onCloseClicked={() => setShow(false)}
-        onSignInComplete={onSignInComplete}
-      />
     </div>
   )
 }

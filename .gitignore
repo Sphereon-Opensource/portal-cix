@@ -4,9 +4,8 @@ out
 *.log.swp
 .DS_Store
 .idea
-.env.local
-.env.production
 .env
+.env.local
 coverage
 .cache
 .next

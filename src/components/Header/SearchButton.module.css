@@ -1,6 +1,5 @@
 .search {
-  display: flex;
-  align-items: center;
+  display: block;
 }
 
 .button {

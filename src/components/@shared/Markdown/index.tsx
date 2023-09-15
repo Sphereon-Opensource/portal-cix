@@ -23,20 +23,13 @@ const Markdown = ({
   const mergedClassName = `${styles.markdown} ${className || ''}`
   return (
     <div className={mergedClassName}>
-      <div
-        dangerouslySetInnerHTML={{ __html: content }}
-        /*
-        style={{
-          ...(className !== 'firstTime' && { color: 'black' }),
-          ...(className === 'firstTime' && { color: 'white' }),
-          ...{ fontSize: 'var(--font-size-base)', fontWeight: 'var(-font-weight-base)' }
-        }}
-*/
-      />
+      {/* Note: We serialize and kill all embedded HTML over in markdownToHtml() */}
+      {/* so the danger here is gone. */}
+      <div dangerouslySetInnerHTML={{ __html: content }} />
       {subContent && (
         <div
           style={{ fontWeight: 'var(--font-weight-base)' }}
-          className={styles.subtext} // add a class for subtext styling
+          className={styles.subtext}
           dangerouslySetInnerHTML={{ __html: subContent }}
         />
       )}

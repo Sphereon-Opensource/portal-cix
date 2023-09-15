@@ -29,10 +29,7 @@
 .button.initial {
   color: var(--menu-font-color);
   border-radius: var(--menu-border-radius);
-}
-
-.button.initial span {
-  display: none;
+  display: inline;
 }
 
 .address {
@@ -86,11 +83,4 @@ svg.caret {
   .blockies {
     margin-right: calc(var(--spacer) / 6);
   }
-}
-
-.connectButton {
-  width: 9rem;
-  height: 4rem;
-  display: inline;
-  font-size: 1.0rem;
 }
