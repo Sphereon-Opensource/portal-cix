@@ -31,7 +31,7 @@ interface TriallContent {
     header: string
     points: string[]
   }
-  footer: {
+  footer?: {
     text: string
     disclaimer: string
     cards: {

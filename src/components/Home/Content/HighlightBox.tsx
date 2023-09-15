@@ -29,7 +29,7 @@ export default function HighlightBox({
   body: string
   buttonLabel: string
   link: string
-  style: string
+  style: 'getInvolved' | 'firstTime'
 }): ReactElement {
   return (
     <div
@@ -63,6 +63,8 @@ export default function HighlightBox({
         <Button
           style={style}
           to={link}
+          /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+          // @ts-ignore
           icon={style === 'getInvolved' ? <ScheduleACall /> : <QuickStart />}
         >
           {buttonLabel}

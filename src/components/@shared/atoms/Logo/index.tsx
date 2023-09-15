@@ -1,17 +1,18 @@
-import React, { ReactElement } from 'react'
+import React, { CSSProperties, ReactElement } from 'react'
 import LogoAsset from '@images/CIX-logo-v3.svg'
 import LogoAssetInverted from '@images/CIX-logo-wit.svg'
 import styles from './index.module.css'
-import Image from 'next/image'
 
 export default function Logo({
-  inverted
+  inverted,
+  style
 }: {
   inverted?: boolean
+  style?: CSSProperties
 }): ReactElement {
   return inverted ? (
-    <LogoAssetInverted className={styles.logo} />
+    <LogoAssetInverted style={style} className={styles.logo} />
   ) : (
-    <LogoAsset className={styles.logo} />
+    <LogoAsset style={style} className={styles.logo} />
   )
 }

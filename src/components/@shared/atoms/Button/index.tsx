@@ -77,6 +77,8 @@ export default function Button({
       }}
     >
       {icon &&
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         React.cloneElement(icon, {
           style: { marginRight: '10px', width: '24px', height: '24px' }
         })}

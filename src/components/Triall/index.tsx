@@ -12,7 +12,7 @@ interface AboutContent {
   header?: {
     title: string
     body: string
-    linkedText: {
+    linkedText?: {
       text: string
       link: {
         text: string
@@ -22,11 +22,19 @@ interface AboutContent {
     }
   }
   image?: string
-  points?: {
-    icon: string
-    title: string
-    text: string
-  }[]
+  points?:
+    | {
+        caption?: string
+        icon: string
+        title: string
+        text: string
+      }[]
+    | {
+        list?: {
+          text: string
+          subtext: string
+        }[]
+      }
   button?: {
     text: string
     to: string
