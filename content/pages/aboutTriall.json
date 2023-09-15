@@ -23,6 +23,6 @@
   ],
   "button": {
     "text": "More about Triall.io",
-    "to": "triall.io/about"
+    "to": "https://triall.io/about"
   }
 }

@@ -10,11 +10,11 @@
       "subItems": [
         {
           "name": "CIX",
-          "link": "/about"
+          "link": "https://triall.io/cix"
         },
         {
           "name": "Triall",
-          "link": "/triall"
+          "link": "https://triall.io/about"
         }
       ]
     },
@@ -38,8 +38,8 @@
   "footer": {
     "designedBy": "",
     "links": [
-      { "label": "About CIX", "link": "/about" },
-      { "label": "About Triall", "link": "/triall" },
+      { "label": "About CIX", "link": "https://triall.io/cix" },
+      { "label": "About Triall", "link": "https://triall.io/about" },
       {
         "label": "Catalogue",
         "link": "/search?sort=nft.created&sortOrder=desc"
