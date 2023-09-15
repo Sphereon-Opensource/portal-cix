@@ -160,6 +160,16 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
     theme: web3ModalTheme
   }
 
+  function isSphereonProvider(provider: any) {
+    const isSphereonAgent =
+      typeof provider === 'object' &&
+      'httpAgent' in provider &&
+      provider.host ===
+        process.env.NEXT_PUBLIC_WEB3_HEADLESS_PROVIDER_HOST_AUTHENTICATED
+    LoggerInstance.log('[web3] Is sphereon agent: ', isSphereonAgent)
+    return isSphereonAgent
+  }
+
   // -----------------------------------
   // Logout helper
   // -----------------------------------
@@ -207,6 +217,8 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
         } else if (
           provider &&
           isSphereonProvider(provider) &&
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           !provider.isConnected
         ) {
           try {
@@ -456,16 +468,6 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
   async function handleAccountsChanged(accounts: string[]) {
     LoggerInstance.log('[web3] Account changed', accounts[0])
     setAccountId(accounts[0])
-  }
-
-  function isSphereonProvider(provider: any) {
-    const isSphereonAgent =
-      typeof provider === 'object' &&
-      'httpAgent' in provider &&
-      provider.host ===
-        process.env.NEXT_PUBLIC_WEB3_HEADLESS_PROVIDER_HOST_AUTHENTICATED
-    LoggerInstance.log('[web3] Is sphereon agent: ', isSphereonAgent)
-    return isSphereonAgent
   }
 
   useEffect(() => {
