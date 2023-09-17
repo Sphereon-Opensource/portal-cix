@@ -164,8 +164,10 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
     const isSphereonAgent =
       typeof provider === 'object' &&
       'httpAgent' in provider &&
-      provider.host ===
-        process.env.NEXT_PUBLIC_WEB3_HEADLESS_PROVIDER_HOST_AUTHENTICATED
+      (provider.host ===
+        process.env.NEXT_PUBLIC_WEB3_HEADLESS_PROVIDER_HOST_AUTHENTICATED ||
+        provider.host ===
+          process.env.NEXT_PUBLIC_WEB3_HEADLESS_PROVIDER_HOST_ANONYMOUS)
     LoggerInstance.log('[web3] Is sphereon agent: ', isSphereonAgent)
     return isSphereonAgent
   }
