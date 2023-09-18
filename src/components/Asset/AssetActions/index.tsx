@@ -91,21 +91,7 @@ export default function AssetActions({
 
   // Get and set user DT balance
   useEffect(() => {
-    LoggerInstance.log(
-      '#####################################################################'
-    )
-    LoggerInstance.log(
-      '#####################################################################'
-    )
-    if (!web3 || !accountId || !isAssetNetwork) {
-      /*LoggerInstance.log(`#${headlessOnly}####################################################################`)
-      if (headlessOnly) {
-
-        connect()
-      }
-      LoggerInstance.log('#####################################################################')*/
-      return
-    }
+    if (!web3 || !accountId || !isAssetNetwork) return
 
     async function init() {
       try {
