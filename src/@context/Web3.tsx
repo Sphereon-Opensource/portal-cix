@@ -169,7 +169,7 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
   function isSphereonProvider(provider: any) {
     const isSphereonAgent =
       typeof provider === 'object' &&
-      'httpAgent' in provider &&
+      ('httpAgent' in provider || 'httpsAgent' in provider) &&
       (provider.host ===
         process.env.NEXT_PUBLIC_WEB3_HEADLESS_PROVIDER_HOST_AUTHENTICATED ||
         provider.host ===
@@ -503,8 +503,9 @@ function Web3Provider({ children }: { children: ReactNode }): ReactElement {
       !web3 ||
       headlessOnly ||
       isSphereonProvider(web3Provider)
-    )
+    ) {
       return
+    }
     web3Provider.on('chainChanged', handleChainChanged)
     web3Provider.on('networkChanged', handleNetworkChanged)
     web3Provider.on('accountsChanged', handleAccountsChanged)
