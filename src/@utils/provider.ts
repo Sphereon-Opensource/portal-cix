@@ -12,7 +12,7 @@ import {
   UrlFile
 } from '@oceanprotocol/lib'
 import Web3 from 'web3'
-import { getValidUntilTime } from './compute'
+import {getValidUntilTime} from './compute'
 
 export async function initializeProviderForCompute(
   dataset: AssetExtended,
@@ -166,10 +166,7 @@ export async function checkValidProvider(
   providerUrl: string
 ): Promise<boolean> {
   try {
-    console.log(`Provider instance ${providerUrl}`)
-    const response = await ProviderInstance.isValidProvider(providerUrl)
-    console.log(`Provider valid: ${response}`)
-    return response
+    return await ProviderInstance.isValidProvider(providerUrl)
   } catch (error) {
     LoggerInstance.error(error.message)
   }
