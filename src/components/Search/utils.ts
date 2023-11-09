@@ -50,17 +50,15 @@ export interface Filter {
 }
 
 export function getSearchQuery(
-  chainIds: number[],
-  text?: string,
-  owner?: string,
-  tags?: string,
-  page?: string,
-  offset?: string,
-  sort?: string,
-  sortDirection?: string,
-  serviceType?: string,
-  accessType?: string,
-  complianceType?: string
+  params: {
+    text?: string
+    page?: number
+    offset?: number
+    sort?: string
+    sortDirection?: string
+    filters?: Filter[]
+  },
+  chainIds: number[]
 ): SearchQuery {
   const { page, offset, sort, sortDirection, filters } = params
   const text = escapeEsReservedCharacters(params.text)
