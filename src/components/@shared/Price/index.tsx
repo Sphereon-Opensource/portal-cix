@@ -23,7 +23,6 @@ export default function Price({
       symbol={accessDetails?.baseToken?.symbol}
       className={className}
       size={size}
-      type={accessDetails?.type}
     />
   ) : null
 }
